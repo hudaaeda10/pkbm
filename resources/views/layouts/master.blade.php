@@ -43,7 +43,7 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-        <div class="container">  
+        <div class="container">
             <a class="navbar-brand"> <img src="{{asset('/sites')}}/images/logo-pkbm.png" alt="logo-pkbm" width="80"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars"></span> Menu
@@ -51,12 +51,13 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item {{ request()->is('beranda') ? 'active': '' }}"><a href="/beranda" class="nav-link">Beranda</a></li>
-                    <li class="nav-item {{ request()->is('tentang') ? 'active': '' }}"><a href="/tentang" class="nav-link">Tentang</a></li>
+                    <li class="nav-item {{ request()->is('tentang') ? 'active': '' }}"><a href="/tentang" class="nav-link">Profile</a></li>
                     <li class="nav-item {{ request()->is('program') ? 'active': '' }}"><a href="/program" class="nav-link">Program</a></li>
-                    <li class="nav-item {{ request()->is('kegiatan') ? 'active': '' }}"><a href="/kegiatan" class="nav-link">Kegiatan</a></li>
+                    <li class="nav-item {{ request()->is('foto') ? 'active': '' }}"><a href="/foto" class="nav-link">Foto</a></li>
+                    <li class="nav-item {{ request()->is('video') ? 'active': '' }}"><a href="/video" class="nav-link">Video</a></li>
                     <li class="nav-item {{ request()->is('artikel') ? 'active': '' }}"><a href="/artikel" class="nav-link">Artikel</a></li>
                     <li class="nav-item {{ request()->is('daftar') ? 'active': '' }}"><a href="/daftar" class="nav-link">Daftar</a></li>
-                    <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="/masuk" class="nav-link">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -130,7 +131,9 @@
         </div>
     </footer>
     <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
     <script src="{{asset('/sites')}}/js/jquery.min.js"></script>

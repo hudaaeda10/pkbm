@@ -15,34 +15,29 @@
         </div>
     </section>
 
-    <section class="intro py-5">
+    <section class="intro py-5 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="intro-box w-100 d-flex">
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="fa fa-phone"></span>
                         </div>
                         <div class="text pl-3">
-                            <h4 class="mb-0">Call us: +12 234 456 7890</h4>
-                            <span> 198 West 21th Street, Suite 721 New York NY 10016</span>
+                            <h4 class="mb-0">Hubungi Kami: +021-4243-281</h4>
+                            <span> Jl. Garuda No.31, RT.7/RW.4, Kec. Kemayoran, Jakarta Pusat 10610</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="intro-box w-100 d-flex">
+                <div class="col-md-6">
+                    <div class="intro-box w-100 d-flex ml-5">
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="fa fa-clock-o"></span>
                         </div>
                         <div class="text pl-3">
-                            <h4 class="mb-0">Opening Hours</h4>
-                            <span>Mon - Sat 7:00 AM - 8:00 PM / Sundays closed</span>
+                            <h4 class="mb-0">Jam Operasional</h4>
+                            <span>Senin - Jum'at 17:00  - 21:00 </span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="intro-box w-100">
-                        <p class="mb-0"><a href="#" class="btn btn-primary">Make an Appointment</a></p>
                     </div>
                 </div>
             </div>
@@ -147,7 +142,7 @@
                             <span class="flaticon-crm"></span>
                         </div>
                         <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Kejujuran</h3>                   
+                            <h3 class="heading">Kesopnanan</h3>                   
                         </div>
                     </div>
                 </div>
@@ -157,87 +152,7 @@
                             <span class="flaticon-marriage"></span>
                         </div>
                         <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Kasih Sayang Sesama</h3>                    
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-goal"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Kemandirian</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-stress"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Kesopanan</h3>               
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-crm"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Kerja Keras</h3>                   
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-marriage"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Tanggunng Jawab</h3>                    
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-goal"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Empati</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-stress"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Kerja Sama</h3>               
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate ml">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-crm"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Swadisiplin</h3>                   
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
-                    <div class="d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-marriage"></span>
-                        </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Sederhana</h3>                    
+                            <h3 class="heading">Kemandirian</h3>                    
                         </div>
                     </div>
                 </div>

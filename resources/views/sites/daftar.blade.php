@@ -104,7 +104,7 @@
                                             <span class="fa fa-paper-plane"></span>
                                         </div>
                                         <div class="text pl-3">
-                                            <p><span>Email:</span> <a href="mailto:">pkbmtamansiswajakarta@gmail.com</a></p>
+                                            <p><span>Email:</span> <a href="mailto:">pkbmtamsisjkt@gmail.com</a></p>
                                         </div>
                                     </div>
                                     <div class="dbox w-100 d-flex align-items-center">

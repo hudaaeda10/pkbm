@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ActivityController extends Controller
+class VideoController extends Controller
 {
-    public function show() 
+    public function show()
     {
         return view('sites.kegiatan');
     }

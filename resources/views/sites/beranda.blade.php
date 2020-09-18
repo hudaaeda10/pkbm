@@ -69,7 +69,7 @@
                         </div>
                         <div class="text pl-3">
                             <h4 class="mb-0">Jam Operasional</h4>
-                            <span>Senin - Jum'at 8:00  - 17:00 </span>
+                            <span>Senin - Jum'at 17:00  - 21:00 </span>
                         </div>
                     </div>
                 </div>
