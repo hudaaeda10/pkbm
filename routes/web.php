@@ -28,7 +28,11 @@ Route::get('/artikel/{article:slug}', 'ArticleController@show');
 Route::get('/daftar', 'RegisterController@show');
 Route::get('/masuk', 'LoginController@show');
 
+
 // admin
+Route::get('/adminlte', 'AdminlteController@dashboard');
+
+// admin-artikel
 Route::get('/berita', 'BeritaController@index');
 
 Route::get('/berita/create', 'BeritaController@create');
