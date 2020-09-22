@@ -10,7 +10,7 @@
                 <a class="nav-link" href="/beranda/admin">Beranda <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item{{ request()->is('berita') ? ' active' : '' }}">
-                <a class="nav-link" href="/berita/{slug}">Berita</a>
+                <a class="nav-link" href="/berita">Berita</a>
             </li>
             <li class="nav-item{{ request()->is('siswa') ? ' active' : '' }}">
                 <a class="nav-link" href="/siswa">Daftar Siswa</a>

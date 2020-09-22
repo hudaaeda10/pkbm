@@ -23,12 +23,25 @@ Route::get('/tentang', 'AboutController@show');
 Route::get('/program', 'ProgramController@show');
 Route::get('/foto', 'PictureController@show');
 Route::get('/video', 'videoController@show');
-Route::get('/artikel', 'ArticleController@show');
+Route::get('/artikel', 'ArticleController@index');
+Route::get('/artikel/{article:slug}', 'ArticleController@show');
 Route::get('/daftar', 'RegisterController@show');
 Route::get('/masuk', 'LoginController@show');
 
 // admin
+Route::get('/berita', 'BeritaController@index');
+
+Route::get('/berita/create', 'BeritaController@create');
+Route::post('/berita/store', 'BeritaController@store');
+
+
+Route::get('/berita/{article:slug}/edit', 'BeritaController@edit');
+Route::patch('/berita/{article:slug}/edit', 'BeritaController@update');
+
+Route::delete('/berita/{article:slug}/delete', 'BeritaController@destroy');
+
 Route::get('/berita/{article:slug}', 'BeritaController@show');
+
 
 
 Route::view('beranda/admin', 'admin.beranda');
