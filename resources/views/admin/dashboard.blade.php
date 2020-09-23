@@ -7,12 +7,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Blank Page</h1>
+                <h1>Dashboard</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Blank Page</li>
+                    <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div>
         </div>
@@ -22,28 +22,36 @@
 <!-- Main content -->
 <section class="content">
 
-    <!-- Default box -->
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Title</h3>
-
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fas fa-times"></i></button>
+    <div class="row">
+        @forelse ($articles as $article)
+        <div class="col-md-3 col-sm-6 col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    {{ $article->title }}
+                </div>
+                <div class="card-body">
+                    <div>
+                        {{ Str::limit($article->body, 100) }}
+                    </div>
+                    <a href="/berita/{{ $article->slug}}">Selengkapnya</a>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    Published On {{ $article->created_at->diffForHumans() }}
+                </div>
             </div>
         </div>
-        <div class="card-body">
-            Start creating your amazing application!
+        @empty
+        <div class="col-md-6">
+            <div class="alert alert-info">
+                Tidak ada berita
+            </div>
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            Footer
-        </div>
-        <!-- /.card-footer-->
+        @endforelse
     </div>
-    <!-- /.card -->
+
+    <div class="d-flex justify-content-center">
+        {{ $articles->links() }}
+    </div>
 
 </section>
 <!-- /.content -->
