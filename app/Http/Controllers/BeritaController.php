@@ -12,7 +12,7 @@ class BeritaController extends Controller
     public function index()
     {
         return view('admin.news.index', [
-            'articles' => Article::latest()->paginate(6),
+            'articles' => Article::latest()->paginate(8),
         ]);
     }
 

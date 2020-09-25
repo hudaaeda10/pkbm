@@ -25,6 +25,7 @@ Route::get('/foto', 'PictureController@show');
 Route::get('/video', 'videoController@show');
 Route::get('/artikel', 'ArticleController@index');
 Route::get('/artikel/{article:slug}', 'ArticleController@show');
+Route::get('/category/{category:slug}', 'CategoryController@tampil');
 Route::get('/daftar', 'RegisterController@show');
 Route::get('/masuk', 'LoginController@show');
 
@@ -33,18 +34,20 @@ Route::get('/masuk', 'LoginController@show');
 Route::get('/adminlte', 'AdminlteController@dashboard');
 
 // admin-artikel
-Route::get('/berita', 'BeritaController@index');
+Route::get('/article', 'BeritaController@index');
 
-Route::get('/berita/create', 'BeritaController@create');
-Route::post('/berita/store', 'BeritaController@store');
+Route::get('/article/create', 'BeritaController@create');
+Route::post('/article/store', 'BeritaController@store');
 
 
-Route::get('/berita/{article:slug}/edit', 'BeritaController@edit');
-Route::patch('/berita/{article:slug}/edit', 'BeritaController@update');
+Route::get('/article/{article:slug}/edit', 'BeritaController@edit');
+Route::patch('/article/{article:slug}/edit', 'BeritaController@update');
 
-Route::delete('/berita/{article:slug}/delete', 'BeritaController@destroy');
+Route::delete('/article/{article:slug}/delete', 'BeritaController@destroy');
 
-Route::get('/berita/{article:slug}', 'BeritaController@show');
+Route::get('/categories/{category:slug}', 'CategoryController@show');
+
+Route::get('/article/{article:slug}', 'BeritaController@show');
 
 
 

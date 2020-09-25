@@ -40,7 +40,7 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="/berita" class="nav-link">
+                            <a href="/article" class="nav-link">
                                 <i class="far fa-newspaper nav-icon"></i>
                                 <p>Artikel</p>
                             </a>
