@@ -8,9 +8,15 @@
             <div class="col-sm-6">
                 @isset($category)
                 <h1>Kategori : {{ $category->name }}</h1>
-                @else
-                <h4>All Category </h4>
                 @endisset
+
+                @isset($tag)
+                <h1>Tag : {{ $tag->name }}</h1>
+                @endisset
+
+                @if(!isset($category) && !isset($tag))
+                <h4>Semua Artikel </h4>
+                @endIf
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -21,7 +27,7 @@
         </div>
         <div class="row">
             <div>
-                <a href="/article/create" class="btn btn-primary"> Buat Berita </a>
+                <a href="/article/create" class="btn btn-primary"> Buat Artikel </a>
             </div>
         </div>
     </div><!-- /.container-fluid -->
@@ -34,11 +40,11 @@
         <div class="col-md-3 col-sm-6 col-12">
             <div class="card mb-4">
                 <div class="card-header">
-                    {{ $article->title }}
+                    {{ Str::limit($article->title, 50) }}
                 </div>
                 <div class="card-body">
                     <div>
-                        {{ Str::limit($article->body, 100) }}
+                        {{ Str::limit($article->body, 90) }}
                     </div>
                     <a href="/article/{{ $article->slug}}">Selengkapnya</a>
                 </div>

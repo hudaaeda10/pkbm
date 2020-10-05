@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-header"> Update Berita: {{ $article->title}} </div>
                     <div class="card-body">
-                        <form action="/berita/{{ $article->slug}}/edit" method="post">
+                        <form action="/article/{{ $article->slug}}/edit" method="post">
                             @method('patch')
                             @csrf
                             <div class="form-group">
@@ -37,6 +37,40 @@
                                 </div>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
+                                    <option disabled selected>Pilih Salah Satu</option>
+                                    @foreach($categories as $category)
+                                    <option {{ $category->id == $article->category_id ? 'selected' : '' }} value="{{ $category->id}}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category')
+                                <div class="invalid-feedback mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">tags</label>
+                                <select name="tags[]" id="tags" class="select2 form-control @error('tags') is-invalid @enderror" multiple>
+                                    @foreach($article->tags as $tag)
+                                    <option selected value="{{ $tag->id}}">{{ $tag->name }}</option>
+                                    @endforeach
+
+                                    @foreach($tags as $tag)
+                                    <option value="{{ $tag->id}}">{{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('tags')
+                                <div class="invalid-feedback mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
                                 <label for="body"> Isi Artikel </label>
                                 <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror">{{ old('body') ?? $article->body }}</textarea>

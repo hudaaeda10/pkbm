@@ -33,7 +33,7 @@
                     <div>
                         {{ Str::limit($article->body, 100) }}
                     </div>
-                    <a href="/berita/{{ $article->slug}}">Selengkapnya</a>
+                    <a href="/article/{{ $article->slug}}">Selengkapnya</a>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     Published On {{ $article->created_at->diffForHumans() }}

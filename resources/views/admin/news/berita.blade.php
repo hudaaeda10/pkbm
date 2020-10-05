@@ -9,7 +9,12 @@
             <div class="col-md-12">
                 <h1>{{ $article->title }}</h1>
                 <div class="text-secondary ">
-                    <a href="/categories/{{ $article->category->slug }}">{{ $article->category->name }} </a> &middot; {{ $article->created_at->format("d F, Y") }}
+                    <a href="/categories/{{ $article->category->slug }}">{{ $article->category->name }} </a>
+                    &middot; {{ $article->created_at->format("d F, Y") }}
+                    &middot;
+                    @foreach ($article->tags as $tag)
+                    <a href="/tags/{{ $tag->slug }}">{{ $tag->name }}</a>
+                    @endforeach
                 </div>
                 <hr>
                 <p> {{ $article->body }}</p>
@@ -39,7 +44,7 @@
                                     </div>
                                 </div>
 
-                                <form action="/berita/{{ $article->slug}}/delete" method="post">
+                                <form action="/article/{{ $article->slug}}/delete" method="post">
                                     @csrf
                                     @method('delete')
                                     <div class="d-flex justify-content-center">

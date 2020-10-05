@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-header"> Artikel Baru </div>
                     <div class="card-body">
-                        <form action="/berita/store" method="post">
+                        <form action="/article/store" method="post">
                             @csrf
                             <div class="form-group">
                                 <label for="title">Judul</label>
@@ -38,6 +38,36 @@
                                 </div>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
+                                    <option disabled selected>Pilih Salah Satu</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id}}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category')
+                                <div class="invalid-feedback mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">tags</label>
+                                <select name="tags[]" id="tags" class="select2 form-control @error('tags') is-invalid @enderror" multiple>
+                                    @foreach($tags as $tag)
+                                    <option value="{{ $tag->id}}">{{ $tag->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('tags')
+                                <div class="invalid-feedback mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
                             <div class="form-group">
                                 <label for="body"> Isi Artikel </label>
                                 <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror"></textarea>

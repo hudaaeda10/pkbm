@@ -47,6 +47,9 @@ Route::delete('/article/{article:slug}/delete', 'BeritaController@destroy');
 
 Route::get('/categories/{category:slug}', 'CategoryController@show');
 
+Route::get('/tags/{tag:slug}', 'TagController@show');
+
+
 Route::get('/article/{article:slug}', 'BeritaController@show');
 
 

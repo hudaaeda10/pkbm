@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\{Article, Category, Tag};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +23,10 @@ class BeritaController extends Controller
 
     public function create()
     {
-        return view('admin.news.create');
+        return view('admin.news.create', [
+            'categories' => Category::get(),
+            'tags' => Tag::get(),
+        ]);
     }
 
     public function store()
@@ -33,31 +36,39 @@ class BeritaController extends Controller
 
         //assign title to slug
         $attr['slug'] = \Str::slug(request('title'));
+        $attr['category_id'] = request('category');
 
         //create new article
-        Article::create($attr);
+        $article = Article::create($attr);
+        $article->tags()->attach(request('tags'));
+
 
         //pesan flash message
-        session()->flash('success', 'Berita baru telah dibuat');
+        session()->flash('success', 'Artikel baru telah dibuat');
 
-        return redirect()->to('/berita');
+        return redirect()->to('/article');
     }
 
     public function edit(Article $article)
     {
-        return view('admin.news.edit', compact('article'));
+        return view('admin.news.edit', [
+            'article' => $article,
+            'categories' => Category::get(),
+            'tags' => Tag::get(),
+        ]);
     }
 
     public function update(Article $article)
     {
         // validasi
         $attr = $this->requestValidate();
-
+        $attr['category_id'] = request('category');
         // update data
         $article->update($attr);
+        $article->tags()->sync(request('tags'));
 
-        session()->flash('success', 'Berita baru telah di Update');
-        return redirect()->to('/berita');
+        session()->flash('success', 'Artikel baru telah di Update');
+        return redirect()->to('/article');
     }
 
     public function requestValidate()
@@ -65,14 +76,17 @@ class BeritaController extends Controller
         return request()->validate([
             'title' => 'required|min:3',
             'body' => 'required',
+            'category' => 'required',
+            'tags' => 'array|required',
         ]);
     }
 
     public function destroy(Article $article)
     {
+        $article->tags()->detach();
         $article->delete();
 
-        session()->flash('delete', "Berita telah di hapus");
-        return redirect('/berita');
+        session()->flash('delete', "Artikel telah di hapus");
+        return redirect('/article');
     }
 }
