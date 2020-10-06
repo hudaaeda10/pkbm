@@ -8,6 +8,6 @@ class VideoController extends Controller
 {
     public function show()
     {
-        return view('sites.kegiatan');
+        return view('sites.video');
     }
 }
