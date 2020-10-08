@@ -13,6 +13,12 @@ class CategoryController extends Controller
         return view('admin.news.index', compact('articles', 'category'));
     }
 
+    public function video(Category $category)
+    {
+        $videos = $category->videos()->latest()->paginate(4);
+        return view('admin.video.index', compact('videos', 'category'));
+    }
+
     public function tampil(Category $category)
     {
         $articles = $category->articles()->latest()->paginate(4);

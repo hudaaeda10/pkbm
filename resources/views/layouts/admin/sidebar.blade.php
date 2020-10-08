@@ -52,7 +52,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
+                            <a href="/admin/video" class="nav-link">
                                 <i class="far fa-file-video nav-icon"></i>
                                 <p>Video PKBM</p>
                             </a>

@@ -16,104 +16,33 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row d-flex">
+            @forelse ($videos as $video)
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry align-self-stretch">
-                    <a href="https://www.youtube.com/watch?v=J_i1XQmp0e0" class="block-20 rounded popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url('');">
+                    <a href="{{ $video->alamat_url }}" class="block-20 rounded popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url({{$video->thumbnail}});">
                         <span class="fa fa-play fa-3x"></span>
                     </a>
                     <div class="text mt-3">
                         <div class="meta mb-2">
-                            <div><a href="#">January 30, 2020</a></div>
-                            <div><a href="#" class="meta-chat">categories</a></div>
+                            <div><a href="#">{{$video->created_at->format('M d, Y')}}</a></div>
+                            <div><a href="#" class="meta-chat">{{$video->category->name}}</a></div>
                         </div>
-                        <h3 class="heading"><a href="https://www.youtube.com/watch?v=J_i1XQmp0e0">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                        <h3 class="heading"><a href="{{$video->alamat_url}}">{{$video->title}}</a></h3>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry align-self-stretch">
-                    <a href="https://www.youtube.com/watch?v=J_i1XQmp0e0" class="block-20 rounded popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url('/sites/images/image_3.jpg');">
-                        <span class="fa fa-play fa-3x"></span>
-                    </a>
-                    <div class="text mt-3">
-                        <div class="meta mb-2">
-                            <div><a href="#">January 30, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                    </div>
+            @empty
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    Tidak ada Video
                 </div>
             </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry align-self-stretch">
-                    <a href="blog-single.html" class="block-20 rounded" style="background-image: url('/sites/images/image_3.jpg');">
-                    </a>
-                    <div class="text mt-3">
-                        <div class="meta mb-2">
-                            <div><a href="#">January 30, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry align-self-stretch">
-                    <a href="blog-single.html" class="block-20 rounded" style="background-image: url('/sites/images/image_4.jpg');">
-                    </a>
-                    <div class="text mt-3">
-                        <div class="meta mb-2">
-                            <div><a href="#">January 30, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry align-self-stretch">
-                    <a href="blog-single.html" class="block-20 rounded" style="background-image: url('/sites/images/image_5.jpg');">
-                    </a>
-                    <div class="text mt-3">
-                        <div class="meta mb-2">
-                            <div><a href="#">January 30, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry align-self-stretch">
-                    <a href="blog-single.html" class="block-20 rounded" style="background-image: url('/sites/images/image_6.jpg');">
-                    </a>
-                    <div class="text mt-3">
-                        <div class="meta mb-2">
-                            <div><a href="#">January 30, 2020</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
         <div class="row mt-5">
             <div class="col text-center">
                 <div class="block-27">
-                    <ul>
-                        <li><a href="#">&lt;</a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li>
-                    </ul>
+                    {{ $videos->links() }}
                 </div>
             </div>
         </div>

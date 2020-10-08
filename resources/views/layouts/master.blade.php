@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{asset('/sites')}}/css/flaticon.css">
     <link rel="stylesheet" href="{{asset('/sites')}}/css/style.css">
 
-    @yield('header')
+    @yield('headersites')
 </head>
 
 <body>

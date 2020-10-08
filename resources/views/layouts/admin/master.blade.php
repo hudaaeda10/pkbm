@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- select 2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    @yield('header')
+    @yield('headeradmin')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -32,6 +32,8 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+            <!-- alert -->
+            @include('alert')
             @yield('content')
         </div>
         <!-- /.content-wrapper -->
@@ -54,6 +56,7 @@
 
     <!-- jQuery -->
     <script src="/admin/plugins/jquery/jquery.min.js"></script>
+    @yield('footeradmin')
     <!-- select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <!-- Bootstrap 4 -->
