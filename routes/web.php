@@ -41,9 +41,9 @@ Route::post('/article/store', 'BeritaController@store');
 Route::get('/article/{article:slug}/edit', 'BeritaController@edit');
 Route::patch('/article/{article:slug}/edit', 'BeritaController@update');
 Route::delete('/article/{article:slug}/delete', 'BeritaController@destroy');
-Route::get('/categories/{category:slug}', 'CategoryController@show');
-Route::get('/tags/{tag:slug}', 'TagController@show');
-Route::get('/article/{article:slug}', 'BeritaController@show');
+Route::get('/categories/{category:slug}', 'CategoryController@show')->name('categories.show');
+Route::get('/tags/{tag:slug}', 'TagController@show')->name('tags.show');
+Route::get('/article/{article:slug}', 'BeritaController@show')->name('articles.show');
 
 // admin-video
 Route::get('/admin/video', 'VideoController@index');

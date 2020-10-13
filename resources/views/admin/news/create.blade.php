@@ -27,8 +27,16 @@
                 <div class="card">
                     <div class="card-header"> Artikel Baru </div>
                     <div class="card-body">
-                        <form action="/article/store" method="post">
+                        <form action="/article/store" method="post" enctype="multipart/form-data">
                             @csrf
+                            <div class="form-group">
+                                <input type="file" name="thumbnail" id="thumbnail">
+                                @error('thumbnail')
+                                <div class="text-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
                             <div class="form-group">
                                 <label for="title">Judul</label>
                                 <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror">
@@ -38,7 +46,6 @@
                                 </div>
                                 @enderror
                             </div>
-
                             <div class="form-group">
                                 <label for="category">Category</label>
                                 <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">

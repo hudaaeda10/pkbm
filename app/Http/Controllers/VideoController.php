@@ -39,6 +39,7 @@ class VideoController extends Controller
         //merubah title menjadi slug
         $attr['slug'] = \Str::slug(request('title'));
         $attr['category_id'] = request('category');
+        $attr['user_id'] = "1";
 
         //buat baru konten video
         $video = Video::create($attr);

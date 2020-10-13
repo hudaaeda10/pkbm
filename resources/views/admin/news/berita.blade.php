@@ -3,10 +3,20 @@
 @section('title', $article->title)
 
 @section('content')
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+        </div>
+    </div>
+</section>
+
 <section class="content">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @if($article->thumbnail)
+                <img style="height: 550px; object-fit:cover; object-position:top;" class="rounder w-100" src="{{ $article->takeImage }}" alt="gambar post">
+                @endif
                 <h1>{{ $article->title }}</h1>
                 <div class="text-secondary ">
                     <a href="/categories/{{ $article->category->slug }}">{{ $article->category->name }} </a>
@@ -15,15 +25,24 @@
                     @foreach ($article->tags as $tag)
                     <a href="/tags/{{ $tag->slug }}">{{ $tag->name }}</a>
                     @endforeach
+                    <div class="media my-3">
+                        <img width="60" class="rounded-circle mr-3" src="/admin/img/default-user.png">
+                        <div class="media-body">
+                            <div class="">
+                                Wrote by {{ $article->author->name}}
+                            </div>
+                            {{ '@' . $article->author->username }}
+                        </div>
+                    </div>
                 </div>
                 <hr>
-                <p> {{ $article->body }}</p>
-
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-link text-danger btn-sm p-0" data-toggle="modal" data-target="#exampleModal">
-                    Delete
-                </button>
+                <p> {!! nl2br($article->body) !!}</p>
+                <div class="flex">
+                    <button type="button" class="btn btn-danger  btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        Delete
+                    </button>
+                    <a href="/article/{{ $article->slug}}/edit" class="btn btn-success btn-sm">Edit</a>
+                </div>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
