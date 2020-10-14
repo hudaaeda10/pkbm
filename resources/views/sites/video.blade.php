@@ -19,7 +19,7 @@
             @forelse ($videos as $video)
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry align-self-stretch">
-                    <a href="{{ $video->alamat_url }}" class="block-20 rounded popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url({{$video->thumbnail}});">
+                    <a href="{{ $video->alamat_url }}" class="block-20 rounded popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url('{{$video->takeImage}}');">
                         <span class="fa fa-play fa-3x"></span>
                     </a>
                     <div class="text mt-3">

@@ -60,7 +60,7 @@
                             @forelse ($videos as $video)
                             <div class="col-md-3 col-sm-6 col-12">
                                 <div class="card mb-4" style="width: 18rem;">
-                                    <a href="{{ $video->alamat_url}}" class="block-20 rounded popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url('/sites/images/logo-pkbm.png');">
+                                    <a href="{{ $video->alamat_url }}" class="block-20 popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url('{{$video->takeImage}}');">
                                         <span class="fa fa-play fa-3x"></span>
                                     </a>
                                     <div class="card-footer d-flex">

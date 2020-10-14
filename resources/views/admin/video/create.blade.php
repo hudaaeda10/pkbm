@@ -23,7 +23,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="/videos/store" method="post" role="form">
+        <form action="/videos/store" method="post" role="form" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -40,18 +40,20 @@
                     @enderror
                 </div>
 
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <label for="exampleInputFile">Masukkan Gambar Video</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="">Upload</span>
+                            <input type="file" name="thumbnail" class="custom-file-input" id="thumbnail">
+                            <label class="custom-file-label" for="exampleInputFile">Choose One</label>
                         </div>
                     </div>
-                </div> -->
+                    @error('thumbnail')
+                    <div class="text-danger mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
 
                 <div class="form-group">
                     <label for="title">Judul Video</label>

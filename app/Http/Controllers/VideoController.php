@@ -12,7 +12,7 @@ class VideoController extends Controller
     public function show()
     {
         return view('sites.video', [
-            'videos' => Video::paginate(8),
+            'videos' => Video::latest()->paginate(8),
         ]);
     }
 
@@ -35,15 +35,16 @@ class VideoController extends Controller
     {
         //Validasi
         $attr = $this->requestValidate();
-
+        $slug = \Str::slug(request('title'));
+        $attr['slug'] = $slug;
+        $thumbnail = request()->file('thumbnail') ? request()->file('thumbnail')->store("images/video") : null;
         //merubah title menjadi slug
-        $attr['slug'] = \Str::slug(request('title'));
         $attr['category_id'] = request('category');
-        $attr['user_id'] = "1";
+        $attr['user_id'] = 1;
+        $attr['thumbnail'] = $thumbnail;
 
         //buat baru konten video
         $video = Video::create($attr);
-
         //pesan flash message
         session()->flash('success', 'Video Baru telah dibuat');
 
@@ -54,8 +55,15 @@ class VideoController extends Controller
     {
         //validasi
         $attr = $this->requestValidate();
+        if (request()->file('thumbnail')) {
+            \Storage::delete($video->thumbnail);
+            $thumbnail = request()->file('thumbnail')->store("images/video");
+        } else {
+            $thumbnail = $video->thumbnail;
+        }
         //memasukkan database update
         $attr['category_id'] = request('category');
+        $attr['thumbnail'] = $thumbnail;
         // menyimpan data update
         $video->update($attr);
 
@@ -73,6 +81,7 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
+        \Storage::delete($video->thumbnail);
         $video->delete();
 
         session()->flash('success', 'Video Telah dihapus');
@@ -83,6 +92,7 @@ class VideoController extends Controller
     public function requestValidate()
     {
         return request()->validate([
+            'thumbnail' => 'image|mimes:jpeg, jpg, png, svg, PNG, JPEG|max:2048',
             'title' => 'required|min:3',
             'alamat_url' => 'required',
             'category' => 'required',
