@@ -29,7 +29,7 @@
                     <div class="img" style="background-image: url('/sites/images/image_1.jpg');"></div>
                     <div class="text pl-md-5">
                         <h4>Judul Artikel <span>{{ $article->title }}</span></h4>
-                        <p>{{ $article->body }}</p>
+                        <p> {{ Str::limit($article->body, 130, '.') }}</p>
                         <div class=" text-secondary mb-2 ">
                             <div>{{ $article->created_at->format("d F, Y") }}</div>
                         </div>

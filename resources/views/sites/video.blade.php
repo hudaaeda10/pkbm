@@ -15,19 +15,27 @@
 
 <section class="ftco-section">
     <div class="container">
+        <div class="mb-5">
+            @isset($category)
+            <h1>Kategori : {{ $category->name }}</h1>
+            @else
+            <h4>Semua Kategori </h4>
+            @endisset
+        </div>
         <div class="row d-flex">
             @forelse ($videos as $video)
-            <div class="col-md-4 d-flex ftco-animate">
+            <div class="col-md-6 d-flex ftco-animate">
                 <div class="blog-entry align-self-stretch">
-                    <a href="{{ $video->alamat_url }}" class="block-20 rounded popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url('{{$video->takeImage}}');">
-                        <span class="fa fa-play fa-3x"></span>
-                    </a>
+
+                    <div class=" rounded popup-vimeo d-flex justify-content-center align-items-center">
+                        {!! $video->alamat_url !!}
+                    </div>
                     <div class="text mt-3">
                         <div class="meta mb-2">
                             <div><a href="#">{{$video->created_at->format('M d, Y')}}</a></div>
-                            <div><a href="#" class="meta-chat">{{$video->category->name}}</a></div>
+                            <div><a href="/category/{{ $video->category->slug}}/video" class="meta-chat">{{$video->category->name}}</a></div>
                         </div>
-                        <h3 class="heading"><a href="{{$video->alamat_url}}">{{$video->title}}</a></h3>
+                        <h3 class="heading">{{$video->title}}</h3>
                     </div>
                 </div>
             </div>

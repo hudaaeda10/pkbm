@@ -56,30 +56,28 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <div class="row">
-                            @forelse ($videos as $video)
-                            <div class="col-md-3 col-sm-6 col-12">
-                                <div class="card mb-4" style="width: 18rem;">
-                                    <a href="{{ $video->alamat_url }}" class="block-20 popup-vimeo d-flex justify-content-center align-items-center" style="background-image: url('{{$video->takeImage}}');">
-                                        <span class="fa fa-play fa-3x"></span>
-                                    </a>
-                                    <div class="card-footer d-flex">
-                                        <div class="text-secondary">
-                                            {{ $video->created_at->format('d M Y')}}
-                                        </div>
-                                        <div class="d-flex">
-                                            <a href="/articles/{{ $video->category->slug }}"> {{ $video->category->name }} </a>
-                                        </div>
+                        <div class="row d-flex">
+                            <div class="col-md-6">
+                                @forelse ($videos as $video)
+                                <div class="card mb-4" style="width: 37rem;">
+                                    <div class="col-md-6 d-flex ftco-animate">
+                                        <div class="blog-entry align-self-stretch">
 
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="heading"><a href="{{ $video->alamat_url }}">{{ Str::limit($video->title, 20) }}</a></h5>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between">
-                                        <!-- tombol delete -->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                                            <div class="d-flex justify-content-center my-2">
+                                                {!! $video->alamat_url !!}
+                                            </div>
+                                            <div class="text mt-3">
+                                                <div class="meta mb-2">
+                                                    <div><a href="#">{{$video->created_at->format('M d, Y')}}</a></div>
+                                                    <div><a href="/articles/{{ $video->category->slug }}" class="meta-chat">{{$video->category->name}}</a></div>
+                                                </div>
+                                                <h3 class="heading">{{$video->title}}</h3>
+                                                <!-- tombol delete -->
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
 
-                                        <a href="/videos/{{ $video->slug}}/edit" class="btn btn-success">Edit</a>
+                                                <a href="/videos/{{ $video->slug}}/edit" class="btn btn-success">Edit</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -90,19 +88,22 @@
                                 </div>
                             </div>
                             @endforelse
+
+                            <div class="d-flex justify-content-center">
+                                {{ $videos->links() }}
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-center">
-                            {{ $videos->links() }}
-                        </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
+
+                    <!-- /.col -->
                 </div>
-                <!-- ./card-body -->
+                <!-- /.row -->
             </div>
-            <!-- /.card -->
+            <!-- ./card-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
     </div>
     </div>
 </section>

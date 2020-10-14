@@ -26,6 +26,7 @@ Route::get('/video', 'videoController@show');
 Route::get('/artikel', 'ArticleController@index');
 Route::get('/artikel/{article:slug}', 'ArticleController@show');
 Route::get('/category/{category:slug}', 'CategoryController@tampil');
+Route::get('/category/{category:slug}/video', 'CategoryController@showvideo');
 Route::get('/daftar', 'RegisterController@show');
 Route::get('/masuk', 'LoginController@show');
 
