@@ -35,7 +35,7 @@
                         <a href="{{ route('categories.show', $article->category->slug) }}" class="text-secondary">
                             <small> {{ $article->category->name }} | </small>
                         </a>
-                        @forelse($article->tags as $tag)
+                        @foreach($article->tags as $tag)
                         <a href="{{ route('tags.show', $tag->slug) }}" class="text-secondary">
                             <small> {{ $tag->name }}</small>
                         </a>
@@ -68,9 +68,9 @@
             </div>
 
             @empty
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="alert alert-info">
-                    Tidak ada berita
+                    There's No Posts
                 </div>
             </div>
             @endforelse

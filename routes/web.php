@@ -21,12 +21,17 @@ Route::get('/', function () {
 Route::get('/beranda', 'SiteController@home');
 Route::get('/tentang', 'AboutController@show');
 Route::get('/program', 'ProgramController@show');
-Route::get('/foto', 'PictureController@show');
-Route::get('/video', 'videoController@show');
+
+Route::get('/foto', 'PhotoController@show');
+Route::get('/category/{category:slug}/photo', 'CategoryController@showphoto');
+
+Route::get('/video', 'VideoController@show');
+Route::get('/category/{category:slug}/video', 'CategoryController@showvideo');
+
 Route::get('/artikel', 'ArticleController@index');
 Route::get('/artikel/{article:slug}', 'ArticleController@show');
 Route::get('/category/{category:slug}', 'CategoryController@tampil');
-Route::get('/category/{category:slug}/video', 'CategoryController@showvideo');
+
 Route::get('/daftar', 'RegisterController@show');
 Route::get('/masuk', 'LoginController@show');
 
@@ -34,7 +39,7 @@ Route::get('/masuk', 'LoginController@show');
 // admin
 Route::get('/adminlte', 'AdminlteController@dashboard');
 
-// admin-artikel
+// admin-artikel-content
 Route::get('/article', 'BeritaController@index');
 
 Route::get('/article/create', 'BeritaController@create');
@@ -46,14 +51,27 @@ Route::get('/categories/{category:slug}', 'CategoryController@show')->name('cate
 Route::get('/tags/{tag:slug}', 'TagController@show')->name('tags.show');
 Route::get('/article/{article:slug}', 'BeritaController@show')->name('articles.show');
 
-// admin-video
+// admin-video-content
 Route::get('/admin/video', 'VideoController@index');
 Route::get('/videos/create', 'VideoController@create');
 Route::post('/videos/store', 'VideoController@store');
 Route::get('/videos/{video:slug}/edit', 'VideoController@edit');
 Route::patch('/videos/{video:slug}/edit', 'VideoController@update');
 Route::delete('/videos/{video:slug}/delete', 'VideoController@destroy');
-Route::get('/articles/{category:slug}', 'CategoryController@video');
+Route::get('/videos/{category:slug}', 'CategoryController@video');
+
+
+//admin-photo-content
+Route::get('/admin/photo', 'PhotoController@index');
+Route::get('/photos/create', 'PhotoController@create');
+Route::post('/photos/store', 'PhotoController@store');
+Route::get('/photos/{photo:slug}/edit', 'PhotoController@edit');
+Route::patch('/photos/{photo:slug}/edit', 'PhotoController@update');
+Route::delete('/photos/{photo:slug}/delete', 'PhotoController@destroy');
+Route::get('/photos/{category:slug}', 'CategoryController@photo');
+
+
+
 
 
 Route::view('beranda/admin', 'admin.beranda');

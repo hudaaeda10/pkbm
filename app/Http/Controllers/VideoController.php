@@ -37,11 +37,9 @@ class VideoController extends Controller
         $attr = $this->requestValidate();
         $slug = \Str::slug(request('title'));
         $attr['slug'] = $slug;
-        $thumbnail = request()->file('thumbnail') ? request()->file('thumbnail')->store("images/video") : null;
         //merubah title menjadi slug
         $attr['category_id'] = request('category');
         $attr['user_id'] = 1;
-        $attr['thumbnail'] = $thumbnail;
 
         //buat baru konten video
         $video = Video::create($attr);
@@ -55,12 +53,6 @@ class VideoController extends Controller
     {
         //validasi
         $attr = $this->requestValidate();
-        if (request()->file('thumbnail')) {
-            \Storage::delete($video->thumbnail);
-            $thumbnail = request()->file('thumbnail')->store("images/video");
-        } else {
-            $thumbnail = $video->thumbnail;
-        }
         //memasukkan database update
         $attr['category_id'] = request('category');
         $attr['thumbnail'] = $thumbnail;
@@ -81,9 +73,7 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
-        \Storage::delete($video->thumbnail);
         $video->delete();
-
         session()->flash('success', 'Video Telah dihapus');
         return redirect()->to('/admin/video');
     }

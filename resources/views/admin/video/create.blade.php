@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Buat Konten Cideo Baru</h1>
+                <h1>Buat Konten Video Baru</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -19,7 +19,7 @@
 <section class="content">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Form Vuideo Baru</h3>
+            <h3 class="card-title">Form Video Baru</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -35,21 +35,6 @@
                         @endforeach
                     </select>
                     @error('category')<div class="invalid-feedback mt-2">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputFile">Masukkan Gambar Video</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" name="thumbnail" class="custom-file-input" id="thumbnail">
-                            <label class="custom-file-label" for="exampleInputFile">Choose One</label>
-                        </div>
-                    </div>
-                    @error('thumbnail')
-                    <div class="text-danger mt-2">
                         {{ $message }}
                     </div>
                     @enderror

@@ -12,9 +12,4 @@ class Video extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-    public function getTakeImageAttribute()
-    {
-        return "/storage/" . $this->thumbnail;
-    }
 }

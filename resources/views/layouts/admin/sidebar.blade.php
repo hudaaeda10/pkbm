@@ -46,7 +46,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
+                            <a href="/admin/photo" class="nav-link">
                                 <i class="far fa-images nav-icon"></i>
                                 <p>Foto PKBM</p>
                             </a>

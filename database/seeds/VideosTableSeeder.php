@@ -14,9 +14,9 @@ class VideosTableSeeder extends Seeder
         \App\Video::create([
             'user_id' => '1',
             'category_id' => '1',
-            'title' => 'Judul Film Pertama',
-            'slug' => \Str::slug('judul-film-pertama'),
-            'alamat_url' => 'https://www.youtube.com/watch?v=nBtH8qPqTGI',
+            'title' => 'Perkembangan PKBM Taman Siswa',
+            'slug' => \Str::slug('perkembangan-pkbm-taman-siswa'),
+            'alamat_url' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/JJRAqmbVbOg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         ]);
     }
 }

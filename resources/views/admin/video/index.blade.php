@@ -69,12 +69,11 @@
                                             <div class="text mt-3">
                                                 <div class="meta mb-2">
                                                     <div><a href="#">{{$video->created_at->format('M d, Y')}}</a></div>
-                                                    <div><a href="/articles/{{ $video->category->slug }}" class="meta-chat">{{$video->category->name}}</a></div>
+                                                    <div><a href="/videos/{{ $video->category->slug }}" class="meta-chat">{{$video->category->name}}</a></div>
                                                 </div>
                                                 <h3 class="heading">{{$video->title}}</h3>
                                                 <!-- tombol delete -->
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-
                                                 <a href="/videos/{{ $video->slug}}/edit" class="btn btn-success">Edit</a>
                                             </div>
                                         </div>
