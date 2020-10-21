@@ -107,10 +107,6 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <div>{{ $photo->title }}</div>
-                    <div class="text-secondary">
-                        <div class="small"> Tanggal Published: {{ $photo->created_at->format('d F, Y') }} </div>
-
-                    </div>
                 </div>
 
                 <form action="/photos/{{ $photo->slug}}/delete" method="post">
@@ -125,8 +121,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 

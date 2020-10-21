@@ -17,11 +17,10 @@ class VideoController extends Controller
     }
 
     //Admin
-    public function index()
+    public function index(Video $video)
     {
-        return view('admin.video.index', [
-            'videos' => Video::latest()->paginate(2),
-        ]);
+        $videos = Video::latest()->paginate(2);
+        return view('admin.video.index', compact('videos', 'video'));
     }
 
     public function create()
@@ -55,7 +54,6 @@ class VideoController extends Controller
         $attr = $this->requestValidate();
         //memasukkan database update
         $attr['category_id'] = request('category');
-        $attr['thumbnail'] = $thumbnail;
         // menyimpan data update
         $video->update($attr);
 

@@ -70,7 +70,17 @@ Route::patch('/photos/{photo:slug}/edit', 'PhotoController@update');
 Route::delete('/photos/{photo:slug}/delete', 'PhotoController@destroy');
 Route::get('/photos/{category:slug}', 'CategoryController@photo');
 
+// admin-fitur_guru-data_siswa
+Route::get('/admin/students', 'StudentController@index');
+Route::post('/student/store', 'StudentController@store');
+Route::get('/student/{student}/edit', 'StudentController@edit');
+Route::patch('/student/{student}/update', 'StudentController@update');
 
+Route::patch('/student/{student}/update/student', 'StudentController@updatestudent'); // update untuk murid
+Route::delete('/student/{student}/delete', 'StudentController@destroy');
+Route::get('/student/{student}/tampil', 'StudentController@tampil');
+Route::post('/student/{id}/addnilai', 'StudentController@addnilai'); // tambah nilai
+Route::get('/student/{student}/{idcourse}/deletenilai', 'StudentController@deletenilai'); // hapus nilai
 
 
 

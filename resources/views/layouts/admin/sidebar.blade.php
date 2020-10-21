@@ -59,6 +59,30 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Fitur Guru
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>NILAI</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/students" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>DATA SISWA</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

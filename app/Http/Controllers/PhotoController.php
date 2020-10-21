@@ -16,11 +16,10 @@ class PhotoController extends Controller
     }
 
 
-    public function index()
+    public function index(Photo $photo)
     {
-        return view('admin.photo.index', [
-            'photos' => Photo::latest()->paginate(2),
-        ]);
+        $photos = Photo::latest()->paginate(2);
+        return view('admin.photo.index', compact('photos', 'photo'));
     }
 
     public function create()

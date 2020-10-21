@@ -120,10 +120,6 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <div>{{ $video->title }}</div>
-                    <div class="text-secondary">
-                        <div class="small"> Tanggal Published: {{ $video->created_at->format('d F, Y') }} </div>
-
-                    </div>
                 </div>
 
                 <form action="/videos/{{ $video->slug}}/delete" method="post">
