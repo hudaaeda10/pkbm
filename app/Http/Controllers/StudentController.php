@@ -58,6 +58,13 @@ class StudentController extends Controller
     public function updatestudent(Student $student)
     {
         $attr = $this->requestValidate();
+        if (request()->file('avatar')) {
+            \Storage::delete($student->avatar);
+            $avatar = request()->file('avatar')->store("images/siswa");
+        } else {
+            $avatar = $student->avatar;
+        }
+        $attr['avatar'] = $avatar;
         $student->update($attr);
         session()->flash('success', 'Siswa Telah terupdate');
         return redirect()->back();

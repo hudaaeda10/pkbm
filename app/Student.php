@@ -19,11 +19,6 @@ class Student extends Model
         return $this->belongsToMany(Course::class)->withPivot(['nilai']);
     }
 
-    public function getTakeImageAttribute()
-    {
-        return "/storage/" . $this->avatar;
-    }
-
     public function getAvatar()
     {
         if (!$this->avatar) {

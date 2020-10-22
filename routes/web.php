@@ -82,6 +82,12 @@ Route::get('/student/{student}/tampil', 'StudentController@tampil');
 Route::post('/student/{id}/addnilai', 'StudentController@addnilai'); // tambah nilai
 Route::get('/student/{student}/{idcourse}/deletenilai', 'StudentController@deletenilai'); // hapus nilai
 
+//admin-fitur_guru-data-guru
+Route::get('/admin/teachers', 'TeacherController@index');
+Route::post('/teacher/store', 'TeacherController@store');
+Route::get('/teacher/{teacher}/profile', 'TeacherController@profile');
+Route::patch('/teacher/{teacher}/update/teacher', 'TeacherController@update');
+Route::delete('/teacher/{teacher}/delete', 'TeacherController@destroy');
 
 
 Route::view('beranda/admin', 'admin.beranda');

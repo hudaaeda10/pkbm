@@ -81,6 +81,12 @@
                                 <p>DATA SISWA</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/teachers" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>DATA GURU</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
