@@ -70,15 +70,9 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="../index.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>NILAI</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="/admin/students" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>DATA SISWA</p>
+                                <p>Nilai SISWA</p>
                             </a>
                         </li>
                         <li class="nav-item">
