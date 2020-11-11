@@ -31,6 +31,7 @@ Route::get('/category/{category:slug}/video', 'CategoryController@showvideo');
 Route::get('/artikel', 'ArticleController@index');
 Route::get('/artikel/{article:slug}', 'ArticleController@show');
 Route::get('/category/{category:slug}', 'CategoryController@tampil');
+Route::get('/artikel/tag/{tag:slug}', 'ArticleController@tampil')->name('site.tag.show');
 
 Route::get('/daftar', 'RegisterController@show');
 Route::get('/masuk', 'LoginController@show');
@@ -84,6 +85,7 @@ Route::get('/student/{student}/{idcourse}/deletenilai', 'StudentController@delet
 
 //admin-fitur_guru-data-guru
 Route::get('/admin/teachers', 'TeacherController@index');
+Route::get('/admin/teachers/create', 'TeacherController@create');
 Route::post('/teacher/store', 'TeacherController@store');
 Route::get('/teacher/{teacher}/profile', 'TeacherController@profile');
 Route::patch('/teacher/{teacher}/update/teacher', 'TeacherController@update');

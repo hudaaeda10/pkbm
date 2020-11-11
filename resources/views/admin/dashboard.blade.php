@@ -47,7 +47,7 @@
                         </a>
                     </h5>
                     <div class="text-secondary my-3">
-                        {{ Str::limit($article->body, 130, '.') }}
+                        <!-- {{ Str::limit($article->body, 130, '.') }} -->
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <div class="media align-items-center">

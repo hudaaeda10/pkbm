@@ -20,16 +20,22 @@
                 <div class="mb-5">
                     @isset($category)
                     <h1>Kategori : {{ $category->name }}</h1>
-                    @else
+                    @endisset
+
+                    @isset($tag)
+                    <h1>Kategori : {{ $tag->name }}</h1>
+                    @endisset
+
+                    @if(!isset($category) && !isset($tag))
                     <h4>Semua Kategori </h4>
                     @endisset
                 </div>
                 @foreach($articles as $article)
                 <div class="story-wrap d-md-flex align-items-center">
-                    <div class="img" style="background-image: url('/sites/images/image_1.jpg');"></div>
+                    <div class="img" style="background-image: url('{{ $article->takeImage }}');"></div>
                     <div class="text pl-md-5">
-                        <h4>Judul Artikel <span>{{ $article->title }}</span></h4>
-                        <p> {{ Str::limit($article->body, 130, '.') }}</p>
+                        <h4><a href="/artikel/{{ $article->slug}}"><span>{{ $article->title }}</span></a></h4>
+                        <!-- <p> {{ Str::limit($article->body, 130, '.') }}</p> -->
                         <div class=" text-secondary mb-2 ">
                             <div>{{ $article->created_at->format("d F, Y") }}</div>
                         </div>

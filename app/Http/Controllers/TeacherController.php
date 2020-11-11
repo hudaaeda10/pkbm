@@ -13,17 +13,23 @@ class TeacherController extends Controller
         return view('admin.guru.index', compact('teachers', 'teacher'));
     }
 
-    public function store()
+    public function create()
+    {
+        return view('admin.guru.create');
+    }
+
+    public function store(Request $request)
     {
         // validasi
         $attr = $this->requestValidate();
 
         $teacher = Teacher::create($attr);
         //pesan flash message
-        session()->flash('success', 'Data Guru  telah dibuat');
+        session()->flash('success', 'Teacher baru telah dibuat');
 
         return redirect()->to('/admin/teachers');
     }
+
 
     public function profile(Teacher $teacher)
     {
@@ -45,24 +51,17 @@ class TeacherController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(Teacher $teacher)
-    {
-        $teacher->delete();
-        session()->flash('success', 'Data Guru Telah dihapus');
-        return redirect()->to('/admin/teachers');
-    }
-
     public function requestValidate()
     {
         return request()->validate([
-            // 'thumbnail' => 'image|mimes:jpeg, jpg, png, svg, PNG, JPEG|max:2048',
-            'nama_depan' => 'required|min:3',
-            'nama_belakang' => 'required|min:3',
+            'nama_depan' => 'required',
+            'nama_belakang' => 'required',
             'jenis_kelamin' => 'required',
-            'pekerjaan' => 'required',
+            // 'email' => 'required',
+            'tanggal_lahir' => 'required',
             'alamat' => 'required',
-            'pendidikan' => 'required',
             'jabatan' => 'required',
+            'pendidikan' => 'required',
             'no_handphone' => 'required',
         ]);
     }

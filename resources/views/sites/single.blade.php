@@ -19,10 +19,10 @@
         <div class="row">
             <div class="col-lg-8 ftco-animate fadeInUp ftco-animated">
                 <p>
-                    <img src="{{asset('sites')}}/images/image_1.jpg" alt="" class="img-fluid">
+                    <img src="{{ $article->takeImage}}" alt="" class="img-fluid">
                 </p>
                 <h2 class="mb-3">{{ $article->title }}</h2>
-                <p>{{ $article->body }}</p>
+                <p>{!! nl2br($article->body) !!}</p>
             </div>
             <div class="col-lg-4 sidebar pl-lg-5 ftco-animate fadeInUp ftco-animated">
                 <div class="sidebar-box">
@@ -41,32 +41,28 @@
                 </div>
 
                 <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
-                    <h3>Recent Blog</h3>
-                    <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url(/sites/images/image_1.jpg);"></a>
-                        <div class="text">
-                            <h3 class="heading"><a href="#">Nama Artikel</a>
-                            </h3>
-                            <div class="meta">
-                                <div><a href="#"><span class="icon-calendar"></span>25 Oktober 2020</a></div>
-                                <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                            </div>
-                        </div>
+                    <h3>Tag</h3>
+                    <div class="tagcloud">
+                        @foreach($article->tags as $tag)
+                        <a href="{{ route('site.tag.show', $tag->slug)}}" class="tag-cloud-link">{{ $tag->name }}</a>
+                        @endforeach
                     </div>
                 </div>
 
                 <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
-                    <h3>Tag</h3>
-                    <div class="tagcloud">
-                        <a href="#" class="tag-cloud-link">home</a>
-                        <a href="#" class="tag-cloud-link">builder</a>
-                        <a href="#" class="tag-cloud-link">build</a>
-                        <a href="#" class="tag-cloud-link">create</a>
-                        <a href="#" class="tag-cloud-link">make</a>
-                        <a href="#" class="tag-cloud-link">construction</a>
-                        <a href="#" class="tag-cloud-link">house</a>
-                        <a href="#" class="tag-cloud-link">architect</a>
+                    <h3>Artikel Lain</h3>
+                    @foreach($articles as $article)
+                    <div class="block-21 mb-4 d-flex">
+                        <a class="blog-img mr-4" style="background-image: url('{{ $article->takeImage}}');"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="/artikel/{{ $article->slug}}">{{ $article->title }}</a></h3>
+                            <div class="meta">
+                                <div><a href="#"><span class="icon-calendar"></span> {{ $article->created_at->format('m. d, Y') }}</a></div>
+                                <div><a href="#"><span class="icon-person"></span> {{ $article->author->name }}</a></div>
+                            </div>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

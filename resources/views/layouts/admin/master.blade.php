@@ -56,7 +56,7 @@
 
     <!-- jQuery -->
     <script src="/admin/plugins/jquery/jquery.min.js"></script>
-    @yield('footeradmin')
+
     <!-- select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -65,6 +65,7 @@
     <script src="/admin/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/admin/js/demo.js"></script>
+    @yield('footeradmin')
     <script>
         $(document).ready(function() {
             $('.select2').select2({

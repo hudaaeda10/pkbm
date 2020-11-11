@@ -60,7 +60,7 @@ class StudentController extends Controller
         $attr = $this->requestValidate();
         if (request()->file('avatar')) {
             \Storage::delete($student->avatar);
-            $avatar = request()->file('avatar')->store("images/siswa", "public");
+            $avatar = request()->file('avatar')->store("images/siswa");
         } else {
             $avatar = $student->avatar;
         }

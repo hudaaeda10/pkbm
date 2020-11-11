@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
-    protected $fillable = ['user_id', 'nama_depan', 'nama_belakang', 'jenis_kelamin', 'pekerjaan', 'alamat', 'jabatan', 'pendidikan', 'no_handphone', 'avatar'];
+    protected $fillable = ['user_id', 'nama_depan', 'nama_belakang', 'jenis_kelamin', 'tanggal_lahir', 'alamat', 'jabatan', 'pendidikan', 'no_handphone', 'avatar'];
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 
     public function getTakeImageAttribute()
     {

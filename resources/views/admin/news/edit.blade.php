@@ -1,5 +1,10 @@
 @extends('layouts.admin.master', ['title' => 'Update Berita'])
 
+@section('headeradmin')
+<!-- summernote -->
+<link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.css">
+@stop
+
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -19,9 +24,9 @@
 </section>
 
 <section class="content">
-    <div class="container">
+    <div class="container-fuluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header"> Update Berita: {{ $article->title}} </div>
                     <div class="card-body">
@@ -81,7 +86,7 @@
 
                             <div class="form-group">
                                 <label for="body"> Isi Artikel </label>
-                                <textarea name="body" id="body" class="form-control @error('body') is-invalid @enderror">{{ old('body') ?? $article->body }}</textarea>
+                                <textarea class="textarea form-control @error('body') is-invalid @enderror" name="body" id="body" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{!! nl2br(old('body') ?? $article->body) !!}</textarea>
                                 @error('body')
                                 <div class="invalid-feedback mt-2">
                                     {{ $message }}
@@ -97,4 +102,15 @@
         </div>
     </div>
 </section>
+@stop
+
+@section('footeradmin')
+<!-- Summernote -->
+<script src="/admin/plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+    $(function() {
+        // Summernote
+        $('.textarea').summernote()
+    })
+</script>
 @stop

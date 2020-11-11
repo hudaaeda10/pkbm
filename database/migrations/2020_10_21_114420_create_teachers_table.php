@@ -19,7 +19,7 @@ class CreateTeachersTable extends Migration
             $table->string('nama_depan');
             $table->string('nama_belakang');
             $table->string('jenis_kelamin', 191);
-            $table->string('pekerjaan');
+            $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->string('jabatan');
             $table->string('pendidikan');

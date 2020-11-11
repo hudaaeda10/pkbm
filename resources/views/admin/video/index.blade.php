@@ -9,6 +9,8 @@
 
 <link rel="stylesheet" href="{{asset('/sites')}}/css/flaticon.css">
 <link rel="stylesheet" href="{{asset('/sites')}}/css/style.css">
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="/admin/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 @stop
 
 @section('content')
@@ -72,9 +74,16 @@
                                                     <div><a href="/videos/{{ $video->category->slug }}" class="meta-chat">{{$video->category->name}}</a></div>
                                                 </div>
                                                 <h3 class="heading">{{$video->title}}</h3>
-                                                <!-- tombol delete -->
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                                                <a href="/videos/{{ $video->slug}}/edit" class="btn btn-success">Edit</a>
+                                                <div class="row ml-2">
+                                                    <!-- tombol delete -->
+                                                    <form action="/videos/{{ $video->slug }}/delete" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger" title="Delete Video" onclick="return confirm('Yakin hapus video?')" type="submit">Delete</button>
+                                                    </form>
+                                                    <a href="/videos/{{ $video->slug}}/edit" class="btn btn-success ml-2">Edit</a>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -102,38 +111,9 @@
         </div>
         <!-- /.card -->
     </div>
-    <!-- /.col -->
-    </div>
-    </div>
 </section>
 
-<!-- Modal delete-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Yakin Menghapus Artikel</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <div>{{ $video->title }}</div>
-                </div>
 
-                <form action="/videos/{{ $video->slug}}/delete" method="post">
-                    @csrf
-                    @method('delete')
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-danger mr-2" type="submit">Ya</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Tidak</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 @stop
 
@@ -150,4 +130,5 @@
 <script src="{{asset('/sites')}}/js/jquery.magnific-popup.min.js"></script>
 <script src="{{asset('/sites')}}/js/scrollax.min.js"></script>
 <script src="{{asset('/sites')}}/js/main.js"></script>
+<script src="/admin/plugins/sweetalert2/sweetalert2.min.js"></script>
 @stop
