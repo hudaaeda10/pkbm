@@ -59,7 +59,15 @@
                                     @enderror
                                 </div>
 
-                                <!--  -->
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
+                                    @error('email')
+                                    <div class="invalid-feedback mt-2">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
 
                                 <div class="form-group">
                                     <label for="tanggal_lahir">Tanggal Lahir</label>

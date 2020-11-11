@@ -34,6 +34,7 @@ Route::get('/category/{category:slug}', 'CategoryController@tampil');
 Route::get('/artikel/tag/{tag:slug}', 'ArticleController@tampil')->name('site.tag.show');
 
 Route::get('/daftar', 'RegisterController@show');
+Route::post('/student/site/store', 'RegisterController@store');
 Route::get('/masuk', 'LoginController@show');
 
 

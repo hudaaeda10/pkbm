@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TeacherController extends Controller
 {
@@ -23,7 +24,27 @@ class TeacherController extends Controller
         // validasi
         $attr = $this->requestValidate();
 
-        $teacher = Teacher::create($attr);
+        $user = new \App\User;
+        $user->role = 'teacher';
+        $user->name = $attr['nama_depan'];
+        $user->username = $attr['nama_depan'];
+        $user->email = $attr['email'];
+        $user->password = bcrypt('rahasia');
+        $user->remember_token = Str::random(60);
+        $user->save();
+
+        // $attr['user_id'] = $user->id;
+        $teacher = Teacher::create([
+            'user_id' => $user->id,
+            'nama_depan' => $request->nama_depan,
+            'nama_belakang' => $request->nama_belakang,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'jabatan' => $request->jabatan,
+            'pendidikan' => $request->pendidikan,
+            'no_handphone' => $request->no_handphone,
+        ]);
         //pesan flash message
         session()->flash('success', 'Teacher baru telah dibuat');
 
@@ -57,7 +78,7 @@ class TeacherController extends Controller
             'nama_depan' => 'required',
             'nama_belakang' => 'required',
             'jenis_kelamin' => 'required',
-            // 'email' => 'required',
+            'email' => 'required',
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'jabatan' => 'required',
