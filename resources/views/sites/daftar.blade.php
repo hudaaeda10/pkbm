@@ -1,20 +1,20 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('{{asset('sites')}}/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/sites/images/banner-pkbm.png');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end">
             <div class="col-md-9 ftco-animate pb-5">
-                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
-                <h1 class="mb-0 bread">Contact</h1>
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/beranda">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span>Daftar <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-0 bread">Daftar</h1>
             </div>
         </div>
     </div>
 </section>
-
 <section class="ftco-section bg-light">
     <div class="container">
+        @include('alert')
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="wrapper">
@@ -41,12 +41,12 @@
                                                 <input type="text" class="form-control" name="nama_belakang" id="nama_belakang" placeholder="Nama Belakang">
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-6">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="label" for="email">Alamat Email</label>
                                                 <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="label" for="jenis_kelamin">Jenis Kelamin</label>

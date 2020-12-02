@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="/teacher/{{ $teacher->id}}/update/teacher" method="post" role="form" enctype="multipart/form-data">
+<form class="form-horizontal" action="/teacher/update/{{$teacher->id}}" method="post" role="form" enctype="multipart/form-data">
     @method('patch')
     @csrf
     <div class="form-group row">
@@ -26,18 +26,6 @@
     </div>
 
     <div class="form-group row">
-        <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-        <div class="col-sm-10">
-            <input type="text" value="{{ old('tanggal_lahir') ?? $teacher->tanggal_lahir }}" name="tanggal_lahir" id="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror">
-        </div>
-        @error('tanggal_lahir')
-        <div class="text-danger mt-3">
-            {{ $message }}
-        </div>
-        @enderror
-    </div>
-
-    <div class="form-group row">
         <label for="inputName2" class="col-sm-2 col-form-label">Jenis Kelamin</label>
         <div class="col-sm-10">
             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror">
@@ -47,6 +35,18 @@
         </div>
         @error('jenis_kelamin')
         <div class="invalid-feedback mt-2">
+            {{ $message }}
+        </div>
+        @enderror
+    </div>
+
+    <div class="form-group row">
+        <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal lahir</label>
+        <div class="col-sm-10">
+            <input type="text" value="{{ old('tanggal_lahir') ?? $teacher->tanggal_lahir }}" name="tanggal_lahir" id="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror">
+        </div>
+        @error('tanggal_lahir')
+        <div class="text-danger mt-3">
             {{ $message }}
         </div>
         @enderror

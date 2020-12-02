@@ -39,17 +39,20 @@
                         Sign In
                     </span>
                 </div>
-
-                <form class="login100-form validate-form">
+                <div class="wrap-login100 mt-2 mr-0">
+                    @include('alert')
+                </div>
+                <form method="post" action="{{ route('masuk')}}" class="login100-form validate-form">
+                    @csrf
                     <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-                        <span class="label-input100">Username</span>
-                        <input class="input100" type="text" name="username" placeholder="Enter username">
+                        <span class="label-input100" for="username">Username</span>
+                        <input class="input100" type="text" id="username" name="username" placeholder="Enter username">
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
-                        <span class="label-input100">Password</span>
-                        <input class="input100" type="password" name="pass" placeholder="Enter password">
+                        <span class="label-input100" for="password">Password</span>
+                        <input class="input100" id="password" type="password" name="password" placeholder="Enter password">
                         <span class="focus-input100"></span>
                     </div>
 

@@ -15,7 +15,6 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
             $table->foreignId('category_id')->nullable();
             $table->string('title', 191);
             $table->string('slug', 191);

@@ -15,7 +15,7 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_id')->unsigned();
             $table->string('nama_depan');
             $table->string('nama_belakang');
             $table->string('jenis_kelamin', 191);
@@ -26,6 +26,8 @@ class CreateTeachersTable extends Migration
             $table->string('no_handphone');
             $table->string('avatar')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

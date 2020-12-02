@@ -55,14 +55,6 @@
                     </div>
                     <h5>{{$photo->title}}</h5>
                     <div class="d-flex justify-content-between align-items-center mt-2">
-                        <div class="media align-items-center">
-                            <img width="40" class="rounded-circle mr-3" src="/admin/img/default-user.png">
-                            <div class="media-body">
-                                <div class="">
-                                    {{ $photo->author->name }}
-                                </div>
-                            </div>
-                        </div>
                         <div class="text-secondary">
                             <small>
                                 Published on {{$photo->created_at->diffForHumans()}}

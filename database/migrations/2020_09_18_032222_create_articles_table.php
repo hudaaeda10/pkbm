@@ -15,12 +15,10 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
             $table->string('thumbnail')->nullable();
             $table->string('title', 191);
             $table->string('slug', 191);
             $table->text('body');
-            $table->timestamp('edited_at')->nullable();
             $table->timestamps();
         });
     }

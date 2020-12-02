@@ -58,10 +58,11 @@
                                     <td>{{ $teacher->no_handphone }}</td>
                                     <td>
                                         <a href="/teacher/{{ $teacher->id }}/profile" class="btn btn-primary">Lihat</a>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                            Delete
-                                        </button>
+                                        <form action="/teacher/{{$teacher->id}}/delete" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger" title="Delete Guru" onclick="return confirm('Yakin hapus Guru?')" type="submit">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -73,34 +74,6 @@
                 <!-- /.card -->
                 <div class="d-flex justify-content-center">
                     {{ $teachers->links() }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal delete -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Yakin Menghapus Data Guru?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div>Nama Guru: {{ $teacher->nama_depan }} {{ $teacher->nama_belakang }}</div>
-                        <div>Jabatan: Guru {{ $teacher->jabatan }}</div>
-                    </div>
-
-                    <form action="/teacher/{{ $teacher->id}}/delete" method="post">
-                        @csrf
-                        @method('delete')
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-danger mr-2" type="submit">Ya</button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Tidak</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

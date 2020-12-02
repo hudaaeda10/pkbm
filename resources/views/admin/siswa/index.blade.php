@@ -60,11 +60,11 @@
                                     <td>{{ $student->created_at->format('d F Y') }}</td>
                                     <td>
                                         <a href="/student/{{ $student->id }}/tampil" class="btn btn-primary">Lihat</a>
-                                        <a href="/student/{{ $student->id}}/edit" class="btn btn-success">Edit</a>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                                            Delete
-                                        </button>
+                                        <form action="/student/{{ $student->id }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger" title="Delete Siswa" onclick="return confirm('Yakin hapus Siswa?')" type="submit">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -76,34 +76,6 @@
                 <!-- /.card -->
                 <div class="d-flex justify-content-center">
                     {{ $students->links() }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal delete -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Yakin Menghapus Siswa</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div>Nama Siswa: {{ $student->nama_depan }} {{ $student->nama_belakang }}</div>
-                        <div>Kelas Paket yang diambil: Paket {{ $student->kelas_paket }}</div>
-                    </div>
-
-                    <form action="/student/{{ $student->id}}/delete" method="post">
-                        @csrf
-                        @method('delete')
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-danger mr-2" type="submit">Ya</button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Tidak</button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -152,6 +124,16 @@
                                     <option value="Perempuan">Perempuan</option>
                                 </select>
                                 @error('jenis_kelamin')<div class="invalid-feedback mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Alamat Email</label>
+                                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
+                                @error('email')
+                                <div class="invalid-feedback mt-2">
                                     {{ $message }}
                                 </div>
                                 @enderror

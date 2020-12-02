@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Student;
+use App\{Student, User};
 use App\Course;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
@@ -20,37 +21,33 @@ class StudentController extends Controller
         return view('admin.siswa.tampil', compact('student', 'courses'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
 
         // validasi
         $attr = $this->requestValidate();
 
-        $student = Student::create($attr);
+        $user = new \App\User;
+        $user->role = 'student';
+        $user->name = $attr['nama_depan'];
+        $user->username = $attr['nama_depan'];
+        $user->email = $attr['email'];
+        $user->password = bcrypt('rahasia');
+        $user->remember_token = Str::random(60);
+        $user->save();
+
+        Student::create([
+            'user_id' => $user->id,
+            'nama_depan' => $request->nama_depan,
+            'nama_belakang' => $request->nama_belakang,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'pekerjaan' => $request->pekerjaan,
+            'kelas_paket' => $request->kelas_paket,
+            'alamat' => $request->alamat
+        ]);
         //pesan flash message
         session()->flash('success', 'Siswa baru telah dibuat');
 
-        return redirect()->to('/admin/students');
-    }
-
-    public function edit(Student $student)
-    {
-        return view('admin.siswa.edit', compact('student'));
-    }
-
-    //guru untuk update murid
-    public function update(Student $student)
-    {
-        $attr = $this->requestValidate();
-        if (request()->file('avatar')) {
-            \Storage::delete($student->avatar);
-            $avatar = request()->file('avatar')->store("images/siswa");
-        } else {
-            $avatar = $student->avatar;
-        }
-        $attr['avatar'] = $avatar;
-        $student->update($attr);
-        session()->flash('success', 'Siswa Telah terupdate');
         return redirect()->to('/admin/students');
     }
 
@@ -70,11 +67,11 @@ class StudentController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(Student $student)
+    public function destroy($idstudent)
     {
-        $student->delete();
+        Student::findOrFail($idstudent)->delete();
         session()->flash('success', 'Siswa Telah dihapus');
-        return redirect()->to('/admin/students');
+        return redirect()->route('admin.student');
     }
 
 

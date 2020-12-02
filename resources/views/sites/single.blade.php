@@ -58,7 +58,6 @@
                             <h3 class="heading"><a href="/artikel/{{ $article->slug}}">{{ $article->title }}</a></h3>
                             <div class="meta">
                                 <div><a href="#"><span class="icon-calendar"></span> {{ $article->created_at->format('m. d, Y') }}</a></div>
-                                <div><a href="#"><span class="icon-person"></span> {{ $article->author->name }}</a></div>
                             </div>
                         </div>
                     </div>

@@ -57,18 +57,27 @@ class TeacherController extends Controller
         return view('admin.guru.profile', compact('teacher'));
     }
 
-    public function update(Teacher $teacher)
+    public function update(Request $request, $teacher)
     {
-        $attr = $this->requestValidate();
+        $teacher = Teacher::findOrFail($teacher);
+        $this->requestValidate();
         if (request()->file('avatar')) {
             \Storage::delete($teacher->avatar);
             $avatar = request()->file('avatar')->store("images/guru");
         } else {
             $avatar = $teacher->avatar;
         }
-        $attr['avatar'] = $avatar;
-        $teacher->update($attr);
+        $request['user_id'] = $teacher->user_id;
+        $request['avatar'] = $avatar;
+        $teacher->update($request->all());
         session()->flash('success', 'Guru Telah terupdate');
+        return redirect()->back();
+    }
+
+    public function destroy($idteacher)
+    {
+        Teacher::findOrFail($idteacher)->delete();
+        session()->flash('success', 'Data guru telah dihapus.');
         return redirect()->back();
     }
 
@@ -78,7 +87,6 @@ class TeacherController extends Controller
             'nama_depan' => 'required',
             'nama_belakang' => 'required',
             'jenis_kelamin' => 'required',
-            'email' => 'required',
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'jabatan' => 'required',

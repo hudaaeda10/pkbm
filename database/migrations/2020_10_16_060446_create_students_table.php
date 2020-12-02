@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_id')->unsigned();
             $table->string('nama_depan');
             $table->string('nama_belakang');
             $table->string('jenis_kelamin', 191);
@@ -24,6 +24,8 @@ class CreateStudentsTable extends Migration
             $table->text('alamat');
             $table->string('avatar')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

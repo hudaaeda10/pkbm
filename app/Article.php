@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $fillable = ['user_id', 'title', 'slug', 'body', 'category_id', 'thumbnail'];
-    protected $with = ['author', 'tags', 'category'];
+    protected $fillable = ['title', 'slug', 'body', 'category_id', 'thumbnail'];
+    protected $with = ['tags', 'category'];
 
     public function category()
     {
@@ -24,8 +24,8 @@ class Article extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function author()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    // public function author()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
 }

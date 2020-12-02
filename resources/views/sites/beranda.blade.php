@@ -12,6 +12,7 @@
                         <div class="text w-100 text-center">
                             <h2>Selamat Datang di Website</h2>
                             <h1 class="mb-4">PKBM Taman Siswa Jakarta</h1>
+                            <p><a href="/daftar" class="btn btn-lg btn-white">Daftar</a></p>
                         </div>
                     </div>
                 </div>
@@ -26,6 +27,7 @@
                         <div class="text w-100 text-center">
                             <h2>Selamat Datang di Website</h2>
                             <h1 class="mb-4">PKBM Taman Siswa Jakarta</h1>
+                            <p><a href="/daftar" class="btn btn-lg btn-white">Daftar</a></p>
                         </div>
                     </div>
                 </div>
@@ -40,6 +42,7 @@
                         <div class="text w-100 text-center">
                             <h2>Selamat Datang di Website</h2>
                             <h1 class="mb-4">PKBM Taman Siswa Jakarta</h1>
+                            <p><a href="/daftar" class="btn btn-lg btn-white">Daftar</a></p>
                         </div>
                     </div>
                 </div>
@@ -173,69 +176,6 @@
     </div>
 </section>
 
-
-<section class="ftco-section testimony-section bg-secondary">
-    <div class="container">
-        <div class="row justify-content-center pb-5 mb-3">
-            <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
-                <h2>Pendapat Lulusan PKBM Taman Siswa</h2>
-                <span class="subheading">Pendapat mereka</span>
-            </div>
-        </div>
-        <div class="row ftco-animate">
-            <div class="col-md-12">
-                <div class="carousel-testimony owl-carousel ftco-owl">
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                            <div class="text">
-                                <p class="mb-4">Saya mendapatkan pengalaman yang baik, kemampuan saya meningkat dan mendapatkan pekerjaan dengan mudah.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url({{asset('/sites')}}/images/person_1.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Joko Anwar</p>
-                                        <span class="position">Pekerja Swat</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                            <div class="text">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url({{asset('/sites')}}/images/person_2.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap py-4">
-                            <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                            <div class="text">
-                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <div class="d-flex align-items-center">
-                                    <div class="user-img" style="background-image: url({{asset('/sites')}}/images/person_3.jpg)"></div>
-                                    <div class="pl-3">
-                                        <p class="name">Roger Scott</p>
-                                        <span class="position">Marketing Manager</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center pb-5 mb-3">
@@ -248,11 +188,11 @@
             @foreach($articles as $article)
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry align-self-stretch">
-                    <a href="blog-single.html" class="block-20 rounded" style="background-image: url('{{$article->takeImage}}');">
+                    <a href="/artikel/{{ $article->slug}}" class="block-20 rounded" style="background-image: url('{{$article->takeImage}}');">
                     </a>
                     <div class="text mt-3">
                         <div class="meta mb-2">
-                            <div><a href="#">{{ $article->created_at->format('Md, Y')}}</a></div>
+                            <div><a href="#">{{ $article->created_at->format('d M, Y')}}</a></div>
                             <div><a href="#">{{ $article->category->name }}</a></div>
                         </div>
                         <h3 class="heading"><a href="/artikel/{{ $article->slug}}">{{ $article->title}}</a></h3>

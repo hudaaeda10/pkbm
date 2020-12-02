@@ -38,7 +38,6 @@ class PhotoController extends Controller
         $thumbnail = request()->file('thumbnail') ? request()->file('thumbnail')->store("images/photo") : null;
         //merubah title menjadi slug
         $attr['category_id'] = request('category');
-        $attr['user_id'] = 1;
         $attr['thumbnail'] = $thumbnail;
 
         //buat baru konten video

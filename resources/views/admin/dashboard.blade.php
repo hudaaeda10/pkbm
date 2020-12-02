@@ -51,11 +51,9 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <div class="media align-items-center">
-                            <img width="40" class="rounded-circle mr-3" src="/admin/img/default-user.png">
+                            <!-- <img width="40" class="rounded-circle mr-3" src="/admin/img/default-user.png"> -->
                             <div class="media-body">
-                                <div class="">
-                                    {{ $article->author->name }}
-                                </div>
+
                             </div>
                         </div>
                         <div class="text-secondary">

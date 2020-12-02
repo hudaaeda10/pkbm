@@ -12,7 +12,6 @@ class VideosTableSeeder extends Seeder
     public function run()
     {
         \App\Video::create([
-            'user_id' => '1',
             'category_id' => '1',
             'title' => 'Perkembangan PKBM Taman Siswa',
             'slug' => \Str::slug('perkembangan-pkbm-taman-siswa'),
