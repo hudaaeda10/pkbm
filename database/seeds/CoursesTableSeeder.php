@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UsersTableSeeder extends Seeder
+class CoursesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,31 +13,28 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('courses')->insert([
             [
-                'name' => 'Aeda',
-                'username' => 'aeda',
-                'password' => bcrypt('rahasia'),
-                'email' => 'aeda@gmail.com',
-                'role' => 'admin',
+                'teacher_id' => '1',
+                'kode' => 'M001',
+                'nama' => 'Bahasa Indonesia',
+                'semester' => 'Ganjil',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'siswa',
-                'username' => 'siswa',
-                'password' => bcrypt('rahasia'),
-                'email' => 'siswa@gmail.com',
-                'role' => 'student',
+                'teacher_id' => '1',
+                'kode' => 'M002',
+                'nama' => 'Bahasa Inggris',
+                'semester' => 'Ganjil',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
             [
-                'name' => 'guru',
-                'username' => 'guru',
-                'password' => bcrypt('rahasia'),
-                'email' => 'guru@gmail.com',
-                'role' => 'techer',
+                'teacher_id' => '1',
+                'kode' => 'M003',
+                'nama' => 'Bahasa Jepang',
+                'semester' => 'Ganjil',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],

@@ -10,7 +10,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/teachers">Home</a></li>
                     <li class="breadcrumb-item active">Data Guru</li>
                 </ol>
             </div>
@@ -26,13 +26,9 @@
                     <div class="card-header">
                         <h3 class="card-title">Data Guru PKBM Taman Siswa</h3>
                         <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 300px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                <div class="button-group input-group-append">
-                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                    <a href="/admin/teachers/create" class="btn btn-primary">Tambah Data Guru</a>
-                                </div>
-                            </div>
+                            @can('isAdmin')
+                            <a href="/admin/teachers/create" class="btn btn-primary btn-sm">Tambah Data Guru</a>
+                            @endcan
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -58,11 +54,6 @@
                                     <td>{{ $teacher->no_handphone }}</td>
                                     <td>
                                         <a href="/teacher/{{ $teacher->id }}/profile" class="btn btn-primary">Lihat</a>
-                                        <form action="/teacher/{{$teacher->id}}/delete" method="post" class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-danger" title="Delete Guru" onclick="return confirm('Yakin hapus Guru?')" type="submit">Delete</button>
-                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

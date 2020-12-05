@@ -14,10 +14,15 @@ class CreateCourseStudentTable extends Migration
     public function up()
     {
         Schema::create('course_student', function (Blueprint $table) {
-            $table->foreignId('course_id')->constrained('courses');
-            $table->foreignId('student_id')->constrained('students');
+            // $table->foreignId('course_id')->constrauined('courses');
+            // $table->foreignId('student_id')->constrained('students');
+            $table->foreignId('course_id')->unsigned();
+            $table->foreignId('student_id')->unsigned();
             $table->integer('nilai');
-            $table->primary(['course_id', 'student_id']);
+            // $table->primary(['course_id', 'student_id']);
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 

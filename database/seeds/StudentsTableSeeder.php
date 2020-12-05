@@ -12,9 +12,9 @@ class StudentsTableSeeder extends Seeder
     public function run()
     {
         \App\Student::create([
-            'user_id' => '1',
-            'nama_depan' => 'Karto',
-            'nama_belakang' => 'Subroto',
+            'user_id' => '2',
+            'nama_depan' => 'Siswa',
+            'nama_belakang' => 'Baru',
             'jenis_kelamin' => 'Laki-Laki',
             'pekerjaan' => 'Guru',
             'kelas_paket' => 'C',

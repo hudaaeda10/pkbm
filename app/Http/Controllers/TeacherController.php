@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Teacher;
+use App\{Teacher, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -24,10 +24,11 @@ class TeacherController extends Controller
         // validasi
         $attr = $this->requestValidate();
 
+
         $user = new \App\User;
         $user->role = 'teacher';
         $user->name = $attr['nama_depan'];
-        $user->username = $attr['nama_depan'];
+        $user->username = strtolower($attr['nama_depan']);
         $user->email = $attr['email'];
         $user->password = bcrypt('rahasia');
         $user->remember_token = Str::random(60);
@@ -57,29 +58,30 @@ class TeacherController extends Controller
         return view('admin.guru.profile', compact('teacher'));
     }
 
-    public function update(Request $request, $teacher)
+    public function update(Teacher $teacher)
     {
-        $teacher = Teacher::findOrFail($teacher);
-        $this->requestValidate();
+        $attr = $this->requestValidate();
         if (request()->file('avatar')) {
             \Storage::delete($teacher->avatar);
             $avatar = request()->file('avatar')->store("images/guru");
         } else {
             $avatar = $teacher->avatar;
         }
-        $request['user_id'] = $teacher->user_id;
-        $request['avatar'] = $avatar;
-        $teacher->update($request->all());
+        $user = User::where('id', $teacher->user_id)->first();
+        $attr['avatar'] = $avatar;
+        $user['email'] = $attr['email'];
+        $teacher->update($attr);
+        $user->update($attr);
         session()->flash('success', 'Guru Telah terupdate');
         return redirect()->back();
     }
 
-    public function destroy($idteacher)
-    {
-        Teacher::findOrFail($idteacher)->delete();
-        session()->flash('success', 'Data guru telah dihapus.');
-        return redirect()->back();
-    }
+    // public function destroy($idteacher)
+    // {
+    //     Teacher::findOrFail($idteacher)->delete();
+    //     session()->flash('success', 'Data guru telah dihapus.');
+    //     return redirect()->back();
+    // }
 
     public function requestValidate()
     {
@@ -92,6 +94,7 @@ class TeacherController extends Controller
             'jabatan' => 'required',
             'pendidikan' => 'required',
             'no_handphone' => 'required',
+            'email' => 'required|unique:users',
         ]);
     }
 }

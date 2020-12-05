@@ -50,8 +50,6 @@
                 <div class="form-group">
                     <label>Role</label>
                     <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
-                        <option value="student" @if($user->role == 'student') selected @endif>Murid</option>
-                        <option value="teacher" @if($user->role == 'teacher') selected @endif>Guru</option>
                         <option value="admin" @if($user->role == 'admin') selected @endif>Admin</option>
                         <option value="konten" @if($user->role == 'konten') selected @endif>Konten</option>
                     </select>
@@ -59,6 +57,12 @@
                         {{ $message }}
                     </div>
                     @enderror
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <br>
+                    <a href="/changePassword/{{$user->id}}" class="btn btn-warning btn-sm mb-3">Ubah Password</a>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

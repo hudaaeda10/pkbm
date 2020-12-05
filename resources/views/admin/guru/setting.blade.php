@@ -53,6 +53,18 @@
     </div>
 
     <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" value="{{ old('email') ?? $teacher->user->email }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
+        </div>
+        @error('email')
+        <div class="text-danger mt-3">
+            {{ $message }}
+        </div>
+        @enderror
+    </div>
+
+    <div class="form-group row">
         <label for="inputExperience" class="col-sm-2 col-form-label">Alamat</label>
         <div class="col-sm-10">
             <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat') ?? $teacher->alamat }}</textarea>

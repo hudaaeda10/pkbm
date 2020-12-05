@@ -47,11 +47,16 @@ Route::post('/masuk', 'Auth\LoginController@login')->name('masuk');
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/adminlte', 'AdminlteController@dashboard');
+
+    // admin-user
     Route::get('/user', 'AdminlteController@index');
     Route::post('/user/store', 'AdminlteController@store');
     Route::get('/user/edit/{iduser}', 'AdminlteController@edit');
     Route::post('/user/update/{iduser}', 'AdminlteController@update');
     Route::delete('/user/delete/{iduser}', 'AdminlteController@destroy');
+    // admin-user-reset-password
+    Route::get('/changePassword/{iduser}', 'AdminlteController@changePassword');
+    Route::patch('/user/changePassword/{iduser}', 'AdminlteController@updatePassword');
 
     // admin-artikel-content
     Route::get('/article', 'BeritaController@index');
@@ -89,7 +94,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/student/store', 'StudentController@store');
 
     Route::patch('/student/{student}/update/student', 'StudentController@updatestudent'); // update untuk murid
-    Route::delete('/student/{idstudent}', 'StudentController@destroy');
+    // Route::delete('/student/{idstudent}', 'StudentController@destroy');
     Route::get('/student/{student}/tampil', 'StudentController@tampil');
     Route::post('/student/{id}/addnilai', 'StudentController@addnilai'); // tambah nilai
     Route::get('/student/{student}/{idcourse}/deletenilai', 'StudentController@deletenilai'); // hapus nilai
@@ -100,7 +105,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/teacher/store', 'TeacherController@store');
     Route::get('/teacher/{teacher}/profile', 'TeacherController@profile');
     Route::patch('/teacher/update/{teacher}', 'TeacherController@update');
-    Route::delete('/teacher/{idteacher}/delete', 'TeacherController@destroy');
+    // Route::delete('/teacher/{idteacher}/delete', 'TeacherController@destroy');
     Route::get('/logout', 'otentikasi\LoginController@logout');
 });
 

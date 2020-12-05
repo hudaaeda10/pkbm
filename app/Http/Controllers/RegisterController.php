@@ -20,7 +20,7 @@ class RegisterController extends Controller
         $user = new \App\User;
         $user->role = 'student';
         $user->name = $attr['nama_depan'];
-        $user->username = $attr['nama_depan'];
+        $user->username = strtolower($attr['nama_depan']);
         $user->email = $attr['email'];
         $user->password = bcrypt('rahasia');
         $user->remember_token = Str::random(60);

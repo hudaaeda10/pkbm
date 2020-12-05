@@ -26,16 +26,18 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
                     <li class="breadcrumb-item active">Photo v1</li>
                 </ol>
             </div>
         </div><!-- /.row -->
+        @canany(['isAdmin', 'isCreator'])
         <div class="row">
             <div>
                 <a href="/photos/create" class="btn btn-primary"> Buat Konten Foto </a>
             </div>
         </div>
+        @endcanany
     </div><!-- /.container-fluid -->
 </div>
 
@@ -61,10 +63,12 @@
                             </small>
                         </div>
                     </div>
+                    @canany(['isAdmin', 'isCreator'])
                     <div class="my-3">
                         <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#exampleModal">Delete</button>
                         <a href="/photos/{{$photo->slug}}/edit" class="btn btn-success">Edit</a>
                     </div>
+                    @endcanany
                 </div>
             </div>
 

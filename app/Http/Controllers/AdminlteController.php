@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\{Article, User};
 use App\Category;
+use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class AdminlteController extends Controller
@@ -27,14 +29,14 @@ class AdminlteController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required',
             'role' => 'required',
         ]);
 
         User::create([
             'name' => $request->name,
-            'username' => $request->name,
+            'username' => strtolower($request->name),
             'email' => $request->email,
             'password' => bcrypt(request('password')),
             'role' => $request->role,
@@ -68,6 +70,24 @@ class AdminlteController extends Controller
     {
         User::findOrFail($iduser)->delete();
         session()->flash('delete', 'User telah dihapus');
+        return redirect()->to('/user');
+    }
+
+    // merubah password
+    public function changePassword($iduser)
+    {
+        $user = User::findOrFail($iduser);
+        return view('admin.user.password', compact('user'));
+    }
+
+    public function updatePassword(Request $request, $iduser)
+    {
+        $this->validate($request, ['password' => 'required|string']);
+        $user = User::findOrFail($iduser);
+        $user->update([
+            'password' => Hash::make($request->get('password'))
+        ]);
+        // session()->flash('success', 'Password telah diedit');
         return redirect()->to('/user');
     }
 }

@@ -10,8 +10,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">data-siswa</li>
+                    <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
+                    <li class="breadcrumb-item active">Data Siswa</li>
                 </ol>
             </div>
         </div>
@@ -25,17 +25,13 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Data Siswa PKBM Taman Siswa</h3>
+                        @can('isAdmin')
                         <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 300px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-                                <div class="button-group input-group-append">
-                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahsiswa">
-                                        Tambah Siswa
-                                    </button>
-                                </div>
-                            </div>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahsiswa">
+                                Tambah Siswa
+                            </button>
                         </div>
+                        @endcan
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -60,11 +56,6 @@
                                     <td>{{ $student->created_at->format('d F Y') }}</td>
                                     <td>
                                         <a href="/student/{{ $student->id }}/tampil" class="btn btn-primary">Lihat</a>
-                                        <form action="/student/{{ $student->id }}" method="post" class="d-inline">
-                                            @csrf
-                                            @method('delete')
-                                            <button class="btn btn-danger" title="Delete Siswa" onclick="return confirm('Yakin hapus Siswa?')" type="submit">Delete</button>
-                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -117,7 +108,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Jenis Kelamin</label>
+                                <label for="jenis_kelamin">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror">
                                     <option disabled selected>Pilih Jenis Kelamin</option>
                                     <option value="Laki-Laki">Laki - Laki</option>
@@ -130,7 +121,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Alamat Email</label>
+                                <label for="email">Email</label>
                                 <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror">
                                 @error('email')
                                 <div class="invalid-feedback mt-2">

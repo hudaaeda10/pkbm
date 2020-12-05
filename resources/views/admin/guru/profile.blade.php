@@ -10,8 +10,9 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">User Siswa</li>
+                    <li class="breadcrumb-item"><a href="/adminlte">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/teachers">Daftar Guru</a></li>
+                    <li class="breadcrumb-item active">Profile Guru</li>
                 </ol>
             </div>
         </div>
@@ -58,7 +59,7 @@
                         <strong><i class="fas fa-book mr-1"></i> Pekerjaan</strong>
 
                         <p class="text-muted">
-                            {{ $teacher->pekerjaan }}
+                            {{ $teacher->jabatan }}
                         </p>
 
                         <hr>
@@ -72,7 +73,7 @@
                         <strong><i class="fas fa-pencil-alt mr-1"></i>Email</strong>
 
                         <p class="text-muted">
-                            <span class="tag tag-danger">guru@gmail.com</span>
+                            <span class="tag tag-danger">{{ $teacher->user->email}}</span>
                         </p>
 
                         <hr>
@@ -83,6 +84,7 @@
             </div>
             <!-- /.col -->
             <div class="col-md-9">
+                @canany(['isTeacher', 'isAdmin'])
                 <div class="card">
                     <div class="card-header p-2">
                         <ul class="nav nav-pills">
@@ -99,6 +101,7 @@
                         <!-- /.tab-content -->
                     </div><!-- /.card-body -->
                 </div>
+                @endcanany
                 <!-- /.nav-tabs-custom -->
             </div>
             <!-- /.col -->

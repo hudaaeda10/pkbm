@@ -36,12 +36,15 @@
                             </div>
                             <hr>
                             <p> {!! nl2br($article->body) !!}</p>
+                            @canany(['isAdmin', 'isCreator'])
                             <div class="flex">
                                 <button type="button" class="btn btn-danger  btn-sm" data-toggle="modal" data-target="#exampleModal">
                                     Delete
                                 </button>
                                 <a href="/article/{{ $article->slug}}/edit" class="btn btn-success btn-sm">Edit</a>
                             </div>
+                            @endcanany
+
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

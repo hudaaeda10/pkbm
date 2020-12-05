@@ -7,6 +7,13 @@
             <div class="col-sm-6">
                 <h1>Form Data Guru Baru</h1>
             </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/adminlte">Beranda</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/teachers">Daftar Guru</a></li>
+                    <li class="breadcrumb-item active">Buat Data Guru</li>
+                </ol>
+            </div>
         </div>
     </div><!-- /.container-fluid -->
 </section>

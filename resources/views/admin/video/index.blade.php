@@ -47,7 +47,9 @@
                     <div class="card-header">
                         <h5 class="card-title">Daftar Video PKBM TAMAN SISWA</h5>
                         <div class="card-tools">
+                            @canany(['isAdmin', 'isCreator'])
                             <a href="/videos/create" class="btn btn-info">New Video</a>
+                            @endcanany
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -74,6 +76,7 @@
                                                     <div><a href="/videos/{{ $video->category->slug }}" class="meta-chat">{{$video->category->name}}</a></div>
                                                 </div>
                                                 <h3 class="heading">{{$video->title}}</h3>
+                                                @canany(['isAdmin', 'isCreator'])
                                                 <div class="row ml-2">
                                                     <!-- tombol delete -->
                                                     <form action="/videos/{{ $video->slug }}/delete" method="post">
@@ -83,7 +86,7 @@
                                                     </form>
                                                     <a href="/videos/{{ $video->slug}}/edit" class="btn btn-success ml-2">Edit</a>
                                                 </div>
-
+                                                @endcanany
                                             </div>
                                         </div>
                                     </div>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\{Student, User};
 use App\Course;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class StudentController extends Controller
@@ -30,7 +32,7 @@ class StudentController extends Controller
         $user = new \App\User;
         $user->role = 'student';
         $user->name = $attr['nama_depan'];
-        $user->username = $attr['nama_depan'];
+        $user->username = strtolower($attr['nama_depan']);
         $user->email = $attr['email'];
         $user->password = bcrypt('rahasia');
         $user->remember_token = Str::random(60);
@@ -61,18 +63,21 @@ class StudentController extends Controller
         } else {
             $avatar = $student->avatar;
         }
+        $user = User::where('id', $student->user_id)->first();
         $attr['avatar'] = $avatar;
+        $user['email'] = $attr['email'];
         $student->update($attr);
+        $user->update($attr);
         session()->flash('success', 'Siswa Telah terupdate');
         return redirect()->back();
     }
 
-    public function destroy($idstudent)
-    {
-        Student::findOrFail($idstudent)->delete();
-        session()->flash('success', 'Siswa Telah dihapus');
-        return redirect()->route('admin.student');
-    }
+    // public function destroy($idstudent)
+    // {
+    //     Student::findOrFail($idstudent)->delete();
+    //     session()->flash('success', 'Siswa Telah dihapus');
+    //     return redirect()->route('admin.student');
+    // }
 
 
     public function addnilai(Request $request, $idstudent)
@@ -101,9 +106,10 @@ class StudentController extends Controller
             'nama_depan' => 'required|min:3',
             'nama_belakang' => 'required|min:3',
             'jenis_kelamin' => 'required',
+            'email' => 'required|unique:users',
             'pekerjaan' => 'required',
-            'kelas_paket' => 'required',
             'alamat' => 'required',
+            'kelas_paket' => 'required',
         ]);
     }
 }

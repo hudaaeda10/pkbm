@@ -15,11 +15,13 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('teacher_id')->nullable();
+            $table->foreignId('teacher_id')->unsigned();
             $table->string('kode', 191);
             $table->string('nama', 191);
             $table->string('semester', 191);
             $table->timestamps();
+
+            $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
         });
     }
 

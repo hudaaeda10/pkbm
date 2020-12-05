@@ -27,4 +27,18 @@ class Student extends Model
 
         return "/storage/" . $this->avatar;
     }
+
+    public function rataRataNilai()
+    {
+        //ambil nilai
+        $total = 0;
+        $hitung = 0;
+        if ($this->courses->isNotEmpty()) {
+            foreach ($this->courses as $courses) {
+                $total += $courses->pivot->nilai;
+                $hitung++;
+            }
+        }
+        return $total != 0 ? round($total / $hitung) : $total;
+    }
 }

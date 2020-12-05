@@ -15,8 +15,9 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">User Siswa</li>
+                    <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/students">Data Siswa</a></li>
+                    <li class="breadcrumb-item active">Profile Siswa</li>
                 </ol>
             </div>
         </div>
@@ -45,7 +46,7 @@
                                 <b>Jumlah Mata Pelajaran</b> <a class="float-right">{{ $student->courses->count() }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>Nilai Rata-Rata</b> <a class="float-right">90</a>
+                                <b>Nilai Rata-Rata</b> <a class="float-right">{{ $student->rataRataNilai()}}</a>
                             </li>
                         </ul>
                     </div>
@@ -77,7 +78,7 @@
                         <strong><i class="fas fa-pencil-alt mr-1"></i>Email</strong>
 
                         <p class="text-muted">
-                            <span class="tag tag-danger">siswa@gmail.com</span>
+                            <span class="tag tag-danger">{{ $student->user->email }}</span>
                         </p>
 
                         <hr>
@@ -92,7 +93,9 @@
                     <div class="card-header p-2">
                         <ul class="nav nav-pills">
                             <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Nilai Pelajaran</a></li>
+                            @canany(['isStudent', 'isAdmin'])
                             <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ubah Profile</a></li>
+                            @endcanany
                         </ul>
                     </div><!-- /.card-header -->
                     <div class="card-body">
@@ -101,10 +104,11 @@
                                 @include('admin.siswa.matpel')
                             </div>
                             <!-- /.tab-pane -->
-
+                            @canany(['isStudent', 'isAdmin'])
                             <div class="tab-pane" id="settings">
                                 @include('admin.siswa.setting')
                             </div>
+                            @endcanany
                             <!-- /.tab-pane -->
                         </div>
                         <!-- /.tab-content -->

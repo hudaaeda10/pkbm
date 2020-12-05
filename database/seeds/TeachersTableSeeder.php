@@ -12,9 +12,9 @@ class TeachersTableSeeder extends Seeder
     public function run()
     {
         \App\Teacher::create([
-            'user_id' => '1',
-            'nama_depan' => 'Karto',
-            'nama_belakang' => 'Subroto',
+            'user_id' => '3',
+            'nama_depan' => 'Guru',
+            'nama_belakang' => 'Baru',
             'jenis_kelamin' => 'Laki-Laki',
             'tanggal_lahir' => '1998-09-03',
             'alamat' => 'bogor',

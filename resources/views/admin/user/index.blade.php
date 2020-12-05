@@ -10,8 +10,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">data-user</li>
+                    <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
+                    <li class="breadcrumb-item active">Data User</li>
                 </ol>
             </div>
         </div>
@@ -28,9 +28,11 @@
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 100px;">
                                 <div class="button-group input-group-append">
+                                    @can('isAdmin')
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahuser">
                                         Tambah User
                                     </button>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -44,7 +46,9 @@
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>role</th>
+                                    @can('isAdmin')
                                     <th>AKSI</th>
+                                    @endcan
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,12 +59,14 @@
                                     <td>{{ $user->email}}</td>
                                     <td>{{ $user->role}}</td>
                                     <td>
+                                        @can('isAdmin')
                                         <a href="/user/edit/{{ $user->id }}" class="btn btn-warning">Ubah</a>
                                         <form action="/user/delete/{{ $user->id }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger" title="Delete User" onclick="return confirm('Yakin hapus User?')" type="submit">Delete</button>
                                         </form>
+                                        @endcan
                                     </td>
                                 </tr>
                                 @endforeach
@@ -112,10 +118,8 @@
                                 <label>Role</label>
                                 <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
                                     <option disabled selected>Pilih Role</option>
-                                    <option value="student">Murid</option>
-                                    <option value="teacher">Guru</option>
                                     <option value="admin">Admin</option>
-                                    <option value="konten">Konten</option>
+                                    <option value="creator">Konten</option>
                                 </select>
                                 @error('role')<div class="invalid-feedback mt-2">
                                     {{ $message }}
