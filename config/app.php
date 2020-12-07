@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        'Cohensive\Embed\EmbedServiceProvider',
+        // 'Cohensive\Embed\EmbedServiceProvider',
         /*
          * Application Service Providers...
          */
