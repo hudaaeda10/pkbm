@@ -6,6 +6,7 @@ use App\{Article, User};
 use App\Category;
 use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -21,8 +22,12 @@ class AdminlteController extends Controller
     // data user
     public function index()
     {
-        $users = User::all();
-        return view('admin.user.index', compact('users'));
+        if (Gate::allows(['isAdmin'])) {
+            $users = User::all();
+            return view('admin.user.index', compact('users'));
+        } else {
+            return abort(404);
+        }
     }
 
     public function store(Request $request)
@@ -49,8 +54,12 @@ class AdminlteController extends Controller
 
     public function edit($iduser)
     {
-        $user = User::findOrFail($iduser);
-        return view('admin.user.edit', compact('user'));
+        if (Gate::allows(['isAdmin'])) {
+            $user = User::findOrFail($iduser);
+            return view('admin.user.edit', compact('user'));
+        } else {
+            return abort(404);
+        }
     }
 
     public function update(Request $request, $iduser)
@@ -76,8 +85,12 @@ class AdminlteController extends Controller
     // merubah password
     public function changePassword($iduser)
     {
-        $user = User::findOrFail($iduser);
-        return view('admin.user.password', compact('user'));
+        if (Gate::allows(['isAdmin'])) {
+            $user = User::findOrFail($iduser);
+            return view('admin.user.password', compact('user'));
+        } else {
+            return abort(404);
+        }
     }
 
     public function updatePassword(Request $request, $iduser)

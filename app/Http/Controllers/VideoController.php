@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class VideoController extends Controller
 {
@@ -25,9 +26,13 @@ class VideoController extends Controller
 
     public function create()
     {
-        return view('admin.video.create', [
-            'categories' => Category::get(),
-        ]);
+        if (Gate::any(['isAdmin', 'isCreator'])) {
+            return view('admin.video.create', [
+                'categories' => Category::get(),
+            ]);
+        } else {
+            return abort(404);
+        }
     }
 
     public function store()
@@ -62,10 +67,14 @@ class VideoController extends Controller
 
     public function edit(Video $video)
     {
-        return view('admin.video.edit', [
-            'video' => $video,
-            'categories' => Category::get(),
-        ]);
+        if (Gate::any(['isAdmin', 'isCreator'])) {
+            return view('admin.video.edit', [
+                'video' => $video,
+                'categories' => Category::get(),
+            ]);
+        } else {
+            return abort(404);
+        }
     }
 
     public function destroy(Video $video)

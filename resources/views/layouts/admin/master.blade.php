@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- select 2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    @stack('header')
     @yield('headeradmin')
 </head>
 
@@ -65,6 +66,7 @@
     <script src="/admin/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/admin/js/demo.js"></script>
+    @stack('footermaster')
     @yield('footeradmin')
     <script>
         $(document).ready(function() {

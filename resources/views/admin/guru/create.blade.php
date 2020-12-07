@@ -76,15 +76,23 @@
                                     @enderror
                                 </div>
 
+
+
                                 <div class="form-group">
                                     <label for="tanggal_lahir">Tanggal Lahir</label>
-                                    <input type="text" name="tanggal_lahir" id="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror">
-                                    @error('tanggal_lahir')
-                                    <div class="invalid-feedback mt-2">
-                                        {{ $message }}
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                        </div>
+                                        <input type="text" name="tanggal_lahir" id="datemask" class="form-control @error('tanggal_lahir') is-invalid @enderror" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
+                                        @error('tanggal_lahir')
+                                        <div class="invalid-feedback mt-2">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
-                                    @enderror
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="alamat"> Alamat </label>
@@ -139,7 +147,20 @@
             </div>
 
         </div>
-
     </div>
-
     @stop
+
+    @push('footermaster')
+    <!-- InputMask -->
+    <script src="/admin/plugins/moment/moment.min.js"></script>
+    <script src="/admin/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+
+    <script>
+        $(function() {
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('yyyy/mm/dd', {
+                'placeholder': 'yyyy/mm/dd'
+            })
+        })
+    </script>
+    @endpush

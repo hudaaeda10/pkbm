@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{Photo, Category};
+use Illuminate\Support\Facades\Gate;
 
 class PhotoController extends Controller
 {
@@ -24,9 +25,13 @@ class PhotoController extends Controller
 
     public function create()
     {
-        return view('admin.photo.create', [
-            'categories' => Category::get(),
-        ]);
+        if (Gate::any(['isAdmin', 'isCreator'])) {
+            return view('admin.photo.create', [
+                'categories' => Category::get(),
+            ]);
+        } else {
+            return abort(404);
+        }
     }
 
     public function store()
@@ -50,10 +55,14 @@ class PhotoController extends Controller
 
     public function edit(Photo $photo)
     {
-        return view('admin.photo.edit', [
-            'photo' => $photo,
-            'categories' => Category::get(),
-        ]);
+        if (Gate::any(['isAdmin', 'isCreator'])) {
+            return view('admin.photo.edit', [
+                'photo' => $photo,
+                'categories' => Category::get(),
+            ]);
+        } else {
+            return abort(404);
+        }
     }
 
     public function update(Photo $photo)

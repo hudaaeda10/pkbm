@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\{Article, Category, Tag};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class BeritaController extends Controller
 {
@@ -23,10 +24,14 @@ class BeritaController extends Controller
 
     public function create()
     {
-        return view('admin.news.create', [
-            'categories' => Category::get(),
-            'tags' => Tag::get(),
-        ]);
+        if (Gate::any(['isAdmin', 'isCreator'])) {
+            return view('admin.news.create', [
+                'categories' => Category::get(),
+                'tags' => Tag::get(),
+            ]);
+        } else {
+            return abort(404);
+        }
     }
 
     public function store()
@@ -55,11 +60,15 @@ class BeritaController extends Controller
 
     public function edit(Article $article)
     {
-        return view('admin.news.edit', [
-            'article' => $article,
-            'categories' => Category::get(),
-            'tags' => Tag::get(),
-        ]);
+        if (Gate::any(['isAdmin', 'isCreator'])) {
+            return view('admin.news.edit', [
+                'article' => $article,
+                'categories' => Category::get(),
+                'tags' => Tag::get(),
+            ]);
+        } else {
+            return abort(404);
+        }
     }
 
     public function update(Article $article)

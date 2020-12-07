@@ -4,19 +4,28 @@ namespace App\Http\Controllers;
 
 use App\{Teacher, User};
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class TeacherController extends Controller
 {
     public function index(Teacher $teacher)
     {
-        $teachers = Teacher::latest()->paginate(5);
-        return view('admin.guru.index', compact('teachers', 'teacher'));
+        if (Gate::any(['isTeacher', 'isAdmin'])) {
+            $teachers = Teacher::latest()->paginate(5);
+            return view('admin.guru.index', compact('teachers', 'teacher'));
+        } else {
+            return abort(404);
+        }
     }
 
     public function create()
     {
-        return view('admin.guru.create');
+        if (Gate::allows('isAdmin')) {
+            return view('admin.guru.create');
+        } else {
+            return abort(404);
+        }
     }
 
     public function store(Request $request)
@@ -55,7 +64,11 @@ class TeacherController extends Controller
 
     public function profile(Teacher $teacher)
     {
-        return view('admin.guru.profile', compact('teacher'));
+        if (Gate::any(['isTeacher', 'isAdmin'])) {
+            return view('admin.guru.profile', compact('teacher'));
+        } else {
+            return abort(404);
+        }
     }
 
     public function update(Teacher $teacher)

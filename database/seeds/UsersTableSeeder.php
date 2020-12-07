@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
                 'username' => 'guru',
                 'password' => bcrypt('rahasia'),
                 'email' => 'guru@gmail.com',
-                'role' => 'techer',
+                'role' => 'teacher',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],

@@ -43,7 +43,6 @@ Route::post('/masuk', 'Auth\LoginController@login')->name('masuk');
 
 
 // admin - Group
-
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/adminlte', 'AdminlteController@dashboard');
