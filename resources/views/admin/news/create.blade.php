@@ -16,8 +16,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Artikel</li>
+                    <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/article">Artikel</a></li>
                     <li class="breadcrumb-item active">Artikel Baru</li>
                 </ol>
             </div>
@@ -35,6 +35,7 @@
                         <form action="/article/store" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
+                                <label for="thumbnail">Foto Thumbnail</label><br>
                                 <input type="file" name="thumbnail" id="thumbnail">
                                 @error('thumbnail')
                                 <div class="text-danger mt-2">

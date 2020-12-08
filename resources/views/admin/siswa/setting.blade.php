@@ -92,12 +92,19 @@
     </div>
 
     <div class="form-group row">
+        <label for="avatar" class="col-sm-2 col-form-label">Gambar Avatar</label>
         <input type="file" name="avatar" id="avatar">
         @error('avatar')
         <div class="text-danger mt-2">
             {{ $message }}
         </div>
         @enderror
+    </div>
+
+    <div class="form-group row">
+        <label for="password" class="col-sm-2 col-form-label">Password</label>
+        <br>
+        <a href="/student/changePassword/{{ $student->id }}" class="btn btn-warning">Ubah Password</a>
     </div>
 
     <div class="form-group row">

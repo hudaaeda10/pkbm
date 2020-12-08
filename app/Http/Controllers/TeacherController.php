@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\{Teacher, User};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class TeacherController extends Controller
@@ -89,6 +90,24 @@ class TeacherController extends Controller
         return redirect()->back();
     }
 
+    // controller ubah password
+    public function changePassword($idteacher)
+    {
+        $teacher = Teacher::findOrFail($idteacher)->first();
+        return view('admin.guru.password', compact('teacher'));
+    }
+
+    public function updatePassword(Request $request, Teacher $teacher)
+    {
+        $user = User::where('id', $teacher->user_id)->first();
+        $user->update([
+            'password' => Hash::make($request->get('password'))
+        ]);
+        session()->flash('success', 'Password telah diubah');
+
+        return redirect()->route('teacher.profile', $teacher->id);
+    }
+
     // public function destroy($idteacher)
     // {
     //     Teacher::findOrFail($idteacher)->delete();
@@ -107,7 +126,8 @@ class TeacherController extends Controller
             'jabatan' => 'required',
             'pendidikan' => 'required',
             'no_handphone' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required',
+            // 'email' => 'required|unique:users',
         ]);
     }
 }

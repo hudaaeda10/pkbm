@@ -9,8 +9,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Video</a></li>
-                    <li class="breadcrumb-item active">Video baru</li>
+                    <li class="breadcrumb-item"><a href="/admin/video">Video</a></li>
+                    <li class="breadcrumb-item active">Edit Video</li>
                 </ol>
             </div>
         </div>

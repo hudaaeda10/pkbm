@@ -28,10 +28,10 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Video v1</li>
+                    <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
+                    <li class="breadcrumb-item active">Video</a></li>
                 </ol>
-            </div><!-- /.col -->
+            </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
@@ -48,7 +48,7 @@
                         <h5 class="card-title">Daftar Video PKBM TAMAN SISWA</h5>
                         <div class="card-tools">
                             @canany(['isAdmin', 'isCreator'])
-                            <a href="/videos/create" class="btn btn-info">New Video</a>
+                            <a href="/videos/create" class="btn btn-info">Buat Video</a>
                             @endcanany
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>

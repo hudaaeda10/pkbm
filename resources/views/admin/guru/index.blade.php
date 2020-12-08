@@ -53,7 +53,7 @@
                                     <td>{{ $teacher->jabatan }}</td>
                                     <td>{{ $teacher->no_handphone }}</td>
                                     <td>
-                                        <a href="/teacher/{{ $teacher->id }}/profile" class="btn btn-primary">Lihat</a>
+                                        <a href="/teacher/profile/{{ $teacher->id }}" class="btn btn-primary">Lihat</a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -1,5 +1,9 @@
 @extends('layouts.admin.master')
 
+@push('header')
+<!-- Ekko Lightbox -->
+<link rel="stylesheet" href="/admin/plugins/ekko-lightbox/ekko-lightbox.css">
+@endpush
 @section('headeradmin')
 <link rel="stylesheet" href="{{asset('/sites')}}/css/animate.css">
 
@@ -27,7 +31,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
-                    <li class="breadcrumb-item active">Photo v1</li>
+                    <li class="breadcrumb-item active">Foto</li>
                 </ol>
             </div>
         </div><!-- /.row -->
@@ -43,42 +47,51 @@
 
 <section class="content">
     <div class="row">
-        <div class="col-md-4">
-            @forelse ($photos as $photo)
-            <div class="card mb-4">
-                @if($photo->thumbnail)
-                <img style="height:400px; object-fit: cover; object-position: center;" class="card-img-top" src="{{$photo->takeImage}}" alt="">
-                @endif
-                <div class="card-body">
-                    <div>
-                        <a href="/photos/{{ $photo->category->slug}}">
-                            <small> {{ $photo->category->name }}</small>
-                        </a>
-                    </div>
-                    <h5>{{$photo->title}}</h5>
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <div class="text-secondary">
-                            <small>
-                                Published on {{$photo->created_at->diffForHumans()}}
-                            </small>
+        <div class="container-fluid">
+            <div class="col-md-4">
+                @forelse ($photos as $photo)
+                <div class="card mb-4">
+                    @if($photo->thumbnail)
+                    <a href="{{$photo->takeImage}}" data-toggle="lightbox">
+                        <img style="height:400px; object-fit: cover; object-position: center;" class="card-img-top img-fluid mb-2" src="{{$photo->takeImage}}" alt="">
+                    </a>
+                    @endif
+                    <div class="card-body">
+                        <div>
+                            <a href="/photos/{{ $photo->category->slug}}">
+                                <small> {{ $photo->category->name }}</small>
+                            </a>
                         </div>
+                        <h5>{{$photo->title}}</h5>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <div class="text-secondary">
+                                <small>
+                                    Published on {{$photo->created_at->diffForHumans()}}
+                                </small>
+                            </div>
+                        </div>
+                        @canany(['isAdmin', 'isCreator'])
+                        <div class="row ml-2">
+                            <!-- tombol delete -->
+                            <form action="/photos/{{ $photo->slug}}/delete" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger mr-2" title="Delete Foto" onclick="return confirm('Yakin hapus foto?')" type="submit">Delete</button>
+                            </form>
+                            <a href="/photos/{{$photo->slug}}/edit" class="btn btn-success">Edit</a>
+                        </div>
+                        @endcanany
                     </div>
-                    @canany(['isAdmin', 'isCreator'])
-                    <div class="my-3">
-                        <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                        <a href="/photos/{{$photo->slug}}/edit" class="btn btn-success">Edit</a>
-                    </div>
-                    @endcanany
                 </div>
-            </div>
 
-            @empty
-            <div class="col-md-6">
-                <div class="alert alert-info">
-                    Tidak ada Photo
+                @empty
+                <div class="col-md-6">
+                    <div class="alert alert-info">
+                        Tidak ada Photo
+                    </div>
                 </div>
+                @endforelse
             </div>
-            @endforelse
         </div>
     </div>
 
@@ -90,43 +103,18 @@
 
 </section>
 
-<!-- Modal delete-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Yakin Menghapus Artikel</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <div>{{ $photo->title }}</div>
-                </div>
-
-                <form action="/photos/{{ $photo->slug}}/delete" method="post">
-                    @csrf
-                    @method('delete')
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-danger mr-2" type="submit">Ya</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Tidak</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
 @stop
+
+@push('footermaster')
+<!-- Ekko Lightbox -->
+<script src="/admin/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<script>
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true
+        });
+    });
+</script>
+@endpush

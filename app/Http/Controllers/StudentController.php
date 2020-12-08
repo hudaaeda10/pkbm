@@ -7,14 +7,22 @@ use App\Course;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
     public function index(Student $student)
     {
-        $students = Student::latest()->paginate(5);
-        return view('admin.siswa.index', compact('students', 'student'));
+        if (Gate::allows('isAdmin')) {
+            $students = Student::latest()->paginate(5);
+            return view('admin.siswa.index', compact('students', 'student'));
+        } elseif (Gate::allows('isTeacher')) {
+            $students = Student::latest()->paginate(5);
+            return view('admin.siswa.index', compact('students', 'student'));
+        } else {
+            return abort(404);
+        }
     }
 
     public function tampil(Student $student)
@@ -115,6 +123,24 @@ class StudentController extends Controller
         }
     }
 
+    // controller ubah password
+    public function changePassword($idstudent)
+    {
+        $student = Student::findOrFail($idstudent)->first();
+        return view('admin.siswa.password', compact('student'));
+    }
+
+    public function updatePassword(Request $request, Student $student)
+    {
+        $user = User::where('id', $student->user_id)->first();
+        $user->update([
+            'password' => Hash::make($request->get('password'))
+        ]);
+        session()->flash('success', 'Password telah diubah');
+
+        return redirect()->route('student.tampil', $student->id);
+    }
+
     public function requestValidate()
     {
         return request()->validate([
@@ -122,7 +148,8 @@ class StudentController extends Controller
             'nama_depan' => 'required|min:3',
             'nama_belakang' => 'required|min:3',
             'jenis_kelamin' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required',
+            // 'email' => 'required|unique:users',
             'pekerjaan' => 'required',
             'alamat' => 'required',
             'kelas_paket' => 'required',

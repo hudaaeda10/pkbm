@@ -27,9 +27,9 @@
             </div>
             <div class="info">
                 @if(Auth::user()->role == 'teacher')
-                <a href="/teacher/{{$user->id}}/profile" class="d-block">{{Auth::user()->name}}</a>
+                <a href="/teacher/profile/{{$user->id}}" class="d-block">{{Auth::user()->name}}</a>
                 @elseif(Auth::user()->role == 'student')
-                <a href="/student/{{$user->id}}/tampil" class="d-block">{{Auth::user()->name}}</a>
+                <a href="/student/tampil/{{$user->id}}" class="d-block">{{Auth::user()->name}}</a>
                 @else
                 <a href="#" class="d-block">{{Auth::user()->name}}</a>
                 @endif
@@ -87,21 +87,22 @@
 
                 @canany(['isAdmin', 'isTeacher'])
                 <li class="nav-header">DATA ANGGOTA PKBM</li>
-
                 <li class="nav-item">
                     <a href="/admin/students" class="nav-link">
                         <i class="fas fa-user-graduate nav-icon"></i>
                         <p>DATA SISWA & NILAI</p>
                     </a>
                 </li>
+                @endcanany
 
+                @can('isAdmin')
                 <li class="nav-item">
                     <a href="/admin/teachers" class="nav-link">
                         <i class="fas fa-chalkboard-teacher nav-icon"></i>
                         <p>DATA GURU</p>
                     </a>
                 </li>
-                @endcanany
+                @endcan
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

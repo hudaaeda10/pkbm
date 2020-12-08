@@ -65,7 +65,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="inputExperience" class="col-sm-2 col-form-label">Alamat</label>
+        <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
         <div class="col-sm-10">
             <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat') ?? $teacher->alamat }}</textarea>
         </div>
@@ -113,12 +113,19 @@
     </div>
 
     <div class="form-group row">
+        <label for="avatar" class="col-sm-2 col-form-label">Gambar Avatar</label>
         <input type="file" name="avatar" id="avatar">
         @error('avatar')
         <div class="text-danger mt-2">
             {{ $message }}
         </div>
         @enderror
+    </div>
+
+    <div class="form-group row">
+        <label for="password" class="col-sm-2 col-form-label">Password</label>
+        <br>
+        <a href="/teacher/changePassword/{{ $teacher->id }}" class="btn btn-warning">Ubah Password</a>
     </div>
 
     <div class="form-group row">

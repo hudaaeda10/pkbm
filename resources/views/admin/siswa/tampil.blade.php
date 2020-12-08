@@ -14,11 +14,18 @@
                 <h1>Profile Siswa</h1>
             </div>
             <div class="col-sm-6">
+                @if($student->user->role == 'admin')
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
                     <li class="breadcrumb-item"><a href="/admin/students">Data Siswa</a></li>
                     <li class="breadcrumb-item active">Profile Siswa</li>
                 </ol>
+                @else
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/adminlte">Home</a></li>
+                    <li class="breadcrumb-item active">Profile Siswa</li>
+                </ol>
+                @endif
             </div>
         </div>
     </div><!-- /.container-fluid -->

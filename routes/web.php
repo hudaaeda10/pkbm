@@ -78,7 +78,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/videos/{video:slug}/delete', 'VideoController@destroy');
     Route::get('/videos/{category:slug}', 'CategoryController@video');
 
-
     //admin-photo-content
     Route::get('/admin/photo', 'PhotoController@index');
     Route::get('/photos/create', 'PhotoController@create');
@@ -91,20 +90,23 @@ Route::group(['middleware' => 'auth'], function () {
     // admin-fitur_guru-data_siswa
     Route::get('/admin/students', 'StudentController@index')->name('admin.student');
     Route::post('/student/store', 'StudentController@store');
-
     Route::patch('/student/{student}/update/student', 'StudentController@updatestudent'); // update untuk murid
     // Route::delete('/student/{idstudent}', 'StudentController@destroy');
-    Route::get('/student/{student}/tampil', 'StudentController@tampil');
+    Route::get('/student/tampil/{student}', 'StudentController@tampil')->name('student.tampil');
     Route::post('/student/{id}/addnilai', 'StudentController@addnilai'); // tambah nilai
     Route::get('/student/{student}/{idcourse}/deletenilai', 'StudentController@deletenilai'); // hapus nilai
+    Route::get('/student/changePassword/{idstudennt}', 'StudentController@changePassword'); // halaman ganti password
+    Route::patch('/student/updatePassword/{student}', 'StudentController@updatePassword'); // patch ganti passwords
 
     //admin-fitur_guru-data-guru
     Route::get('/admin/teachers', 'TeacherController@index');
     Route::get('/admin/teachers/create', 'TeacherController@create');
     Route::post('/teacher/store', 'TeacherController@store');
-    Route::get('/teacher/{teacher}/profile', 'TeacherController@profile');
+    Route::get('/teacher/profile/{teacher}', 'TeacherController@profile')->name('teacher.profile');
     Route::patch('/teacher/update/{teacher}', 'TeacherController@update');
     // Route::delete('/teacher/{idteacher}/delete', 'TeacherController@destroy');
+    Route::get('/teacher/changePassword/{idteacher}', 'TeacherController@changePassword'); // tampilan ubah passwords
+    Route::patch('/teacher/updatePassword/{teacher}', 'TeacherController@updatePassword');
     Route::get('/logout', 'otentikasi\LoginController@logout');
 });
 

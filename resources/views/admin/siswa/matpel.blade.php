@@ -5,7 +5,7 @@
                 <h3 class="card-title">Daftar Nilai Mata Pelajaran</h3>
                 <div class="card-tools">
                     @canany(['isTeacher', 'isAdmin'])
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahnilai">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahnilai">
                         Tambah Nilai
                     </button>
                     @endcanany

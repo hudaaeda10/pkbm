@@ -55,7 +55,7 @@
                                     <td>Paket {{ $student->kelas_paket}}</td>
                                     <td>{{ $student->created_at->format('d F Y') }}</td>
                                     <td>
-                                        <a href="/student/{{ $student->id }}/tampil" class="btn btn-primary">Lihat</a>
+                                        <a href="/student/tampil/{{ $student->id }}" class="btn btn-primary">Lihat</a>
                                     </td>
                                 </tr>
                                 @endforeach

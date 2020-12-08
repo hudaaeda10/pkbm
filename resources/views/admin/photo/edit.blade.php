@@ -9,8 +9,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/admin/photo">Photo</a></li>
-                    <li class="breadcrumb-item active">Photo baru</li>
+                    <li class="breadcrumb-item"><a href="/admin/photo">Foto</a></li>
+                    <li class="breadcrumb-item active">Edit Foto</li>
                 </ol>
             </div>
         </div>
@@ -26,16 +26,17 @@
         <form action="/photos/{{ $photo->slug }}/edit" method="post" role="form" enctype="multipart/form-data">
             @method('patch')
             @csrf
-            <div class="form-group my-3 ml-3">
-                <input type="file" name="thumbnail" id="thumbnail">
-                @error('thumbnail')
-                <div class="text-danger mt-2">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-
             <div class="card-body">
+                <div class="form-group">
+                    <label for="thumbnail">Foto Thumbnail</label><br>
+                    <input type="file" name="thumbnail" id="thumbnail">
+                    @error('thumbnail')
+                    <div class="text-danger mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label>Pilih Kategori</label>
                     <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">

@@ -9,8 +9,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Photo</a></li>
-                    <li class="breadcrumb-item active">Photo baru</li>
+                    <li class="breadcrumb-item"><a href="/admin/photo">Foto</a></li>
+                    <li class="breadcrumb-item active">Buat Foto</li>
                 </ol>
             </div>
         </div>
@@ -25,16 +25,17 @@
         <!-- form start -->
         <form action="/photos/store" method="post" role="form" enctype="multipart/form-data">
             @csrf
-            <div class="form-group my-2">
-                <input type="file" name="thumbnail" id="thumbnail">
-                @error('thumbnail')
-                <div class="text-danger mt-2">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-
             <div class="card-body">
+                <div class="form-group">
+                    <label for="thumbnail">Foto Thumbnail</label><br>
+                    <input type="file" name="thumbnail" id="thumbnail">
+                    @error('thumbnail')
+                    <div class="text-danger mt-2">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label>Pilih Kategori</label>
                     <select name="category" id="category" class="form-control @error('category') is-invalid @enderror">
