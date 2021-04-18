@@ -33,36 +33,33 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-        if (Gate::allows('isAdmin')) {
 
-            // validasi
-            $attr = $this->requestValidate();
 
-            $user = new \App\User;
-            $user->role = 'student';
-            $user->name = $attr['nama_depan'];
-            $user->username = strtolower($attr['nama_depan']);
-            $user->email = $attr['email'];
-            $user->password = bcrypt('rahasia');
-            $user->remember_token = Str::random(60);
-            $user->save();
+        // validasi
+        $attr = $this->requestValidateCreate();
 
-            Student::create([
-                'user_id' => $user->id,
-                'nama_depan' => $request->nama_depan,
-                'nama_belakang' => $request->nama_belakang,
-                'jenis_kelamin' => $request->jenis_kelamin,
-                'pekerjaan' => $request->pekerjaan,
-                'kelas_paket' => $request->kelas_paket,
-                'alamat' => $request->alamat
-            ]);
-            //pesan flash message
-            session()->flash('success', 'Siswa baru telah dibuat');
+        $user = new \App\User;
+        $user->role = 'student';
+        $user->name = $attr['nama_depan'];
+        $user->username = strtolower($attr['nama_depan']);
+        $user->email = $attr['email'];
+        $user->password = bcrypt('rahasia');
+        $user->remember_token = Str::random(60);
+        $user->save();
 
-            return redirect()->to('/admin/students');
-        } else {
-            return abort(404);
-        }
+        Student::create([
+            'user_id' => $user->id,
+            'nama_depan' => $request->nama_depan,
+            'nama_belakang' => $request->nama_belakang,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'pekerjaan' => $request->pekerjaan,
+            'kelas_paket' => $request->kelas_paket,
+            'alamat' => $request->alamat
+        ]);
+        //pesan flash message
+        session()->flash('success', 'Siswa baru telah dibuat');
+
+        return redirect()->to('/admin/students');
     }
 
     // murid untuk update
@@ -139,6 +136,20 @@ class StudentController extends Controller
         session()->flash('success', 'Password telah diubah');
 
         return redirect()->route('student.tampil', $student->id);
+    }
+
+    public function requestValidateCreate()
+    {
+        return request()->validate([
+            // 'thumbnail' => 'image|mimes:jpeg, jpg, png, svg, PNG, JPEG|max:2048',
+            'nama_depan' => 'required|min:3',
+            'nama_belakang' => 'required|min:3',
+            'jenis_kelamin' => 'required',
+            'email' => 'required|unique:users',
+            'pekerjaan' => 'required',
+            'alamat' => 'required',
+            'kelas_paket' => 'required',
+        ]);
     }
 
     public function requestValidate()

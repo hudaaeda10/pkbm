@@ -11,7 +11,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = collect(['Pendidikan', 'Budaya']);
+        $categories = collect(['Pendidikan', 'Budaya', 'Pengajaran', 'Kelas', 'Almamater', 'Pelajaran']);
         $categories->each(function ($c) {
             \App\Category::create([
                 'name' => $c,

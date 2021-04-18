@@ -4,7 +4,7 @@
 
 <div class="hero-wrap">
     <div class="home-slider owl-carousel">
-        <div class="slider-item" style="background-image:url({{asset('/sites')}}/images/home-pkbm.png);">
+        <div class="slider-item" style="background-image:url(/sites/images/home-pkbm.png);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="slider-item" style="background-image:url({{asset('/sites')}}/images/home2-pkbm.png);">
+        <div class="slider-item" style="background-image:url(/sites/images/home2-pkbm.png);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="slider-item" style="background-image:url({{asset('/sites')}}/images/home3-pkbm.png);">
+        <div class="slider-item" style="background-image:url(/sites/images/home3-pkbm.png);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -136,7 +136,7 @@
         </div>
         <div class="row d-flex no-gutters">
             <div class="col-md-6 d-flex">
-                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end mb-4 mb-sm-0" style="background-image:url({{asset('/sites')}}/images/video-image.png);">
+                <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end mb-4 mb-sm-0" style="background-image:url(/sites/images/video-image.png);">
                     <a href="https://www.youtube.com/watch?v=nBtH8qPqTGI" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
                         <span class="fa fa-play"></span>
                     </a>

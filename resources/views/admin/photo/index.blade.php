@@ -52,7 +52,7 @@
                 @forelse ($photos as $photo)
                 <div class="card mb-4">
                     @if($photo->thumbnail)
-                    <a href="{{$photo->takeImage}}" data-toggle="lightbox">
+                    <a href="{{$photo->takeImage}}" data-toggle="lightbox" data-title="{{ $photo->title }}">
                         <img style="height:400px; object-fit: cover; object-position: center;" class="card-img-top img-fluid mb-2" src="{{$photo->takeImage}}" alt="">
                     </a>
                     @endif

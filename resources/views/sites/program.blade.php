@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-end">
             <div class="col-md-9 ftco-animate pb-5">
-                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="/beranda">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span>Program <i class="ion-ios-arrow-forward"></i></span></p>
+                <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{route('beranda')}}">Beranda <i class="ion-ios-arrow-forward"></i></a></span> <span>Program <i class="ion-ios-arrow-forward"></i></span></p>
                 <h1 class="mb-0 bread">Program</h1>
             </div>
         </div>

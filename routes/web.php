@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // site
-Route::get('/beranda', 'SiteController@home');
+Route::get('/', 'SiteController@home')->name('beranda');
 Route::get('/tentang', 'AboutController@show');
 Route::get('/program', 'ProgramController@show');
 

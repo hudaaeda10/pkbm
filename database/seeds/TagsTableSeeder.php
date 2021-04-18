@@ -11,7 +11,7 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        $tags = collect(['SMK', 'Taman Siswa', 'Sejarah', 'Pariwisata', 'Otomotif']);
+        $tags = collect(['SMK', 'Taman Siswa', 'Sejarah', 'Pariwisata', 'Otomotif', 'Belajar', 'Pemerintah', 'Agama', 'Classroom', 'Online']);
         $tags->each(function ($c) {
             \App\Tag::create([
                 'name' => $c,

@@ -56,7 +56,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <strong><i class="fas fa-book mr-1"></i> Pekerjaan</strong>
+                        <strong><i class="fas fa-book mr-1"></i> Jabatan</strong>
 
                         <p class="text-muted">
                             {{ $teacher->jabatan }}

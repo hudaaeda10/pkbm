@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->unsigned();
             $table->string('nama_depan');
-            $table->string('nama_belakang');
+            $table->string('nama_belakang')->nullable();
             $table->string('jenis_kelamin', 191);
             $table->string('pekerjaan');
             $table->string('kelas_paket');

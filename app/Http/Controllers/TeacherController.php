@@ -32,7 +32,7 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         // validasi
-        $attr = $this->requestValidate();
+        $attr = $this->requestValidateCreate();
 
 
         $user = new \App\User;
@@ -114,6 +114,22 @@ class TeacherController extends Controller
     //     session()->flash('success', 'Data guru telah dihapus.');
     //     return redirect()->back();
     // }
+
+    public function requestValidateCreate()
+    {
+        return request()->validate([
+            'nama_depan' => 'required',
+            'nama_belakang' => 'required',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required',
+            'alamat' => 'required',
+            'jabatan' => 'required',
+            'pendidikan' => 'required',
+            'no_handphone' => 'required',
+            // 'email' => 'required',
+            'email' => 'required|unique:users',
+        ]);
+    }
 
     public function requestValidate()
     {

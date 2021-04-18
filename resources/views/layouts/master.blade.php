@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="{{asset('/sites')}}/css/flaticon.css">
     <link rel="stylesheet" href="{{asset('/sites')}}/css/style.css">
-
+    @stack('headersite')
     @yield('headersites')
 </head>
 
@@ -50,14 +50,14 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav m-auto">
-                    <li class="nav-item {{ request()->is('beranda') ? 'active': '' }}"><a href="/beranda" class="nav-link">Beranda</a></li>
+                    <li class="nav-item {{ request()->is('beranda') ? 'active': '' }}"><a href="{{route('beranda')}}" class="nav-link">Beranda</a></li>
                     <li class="nav-item {{ request()->is('tentang') ? 'active': '' }}"><a href="/tentang" class="nav-link">Profile</a></li>
                     <li class="nav-item {{ request()->is('program') ? 'active': '' }}"><a href="/program" class="nav-link">Program</a></li>
                     <li class="nav-item {{ request()->is('foto') ? 'active': '' }}"><a href="/foto" class="nav-link">Foto</a></li>
                     <li class="nav-item {{ request()->is('video') ? 'active': '' }}"><a href="/video" class="nav-link">Video</a></li>
                     <li class="nav-item {{ request()->is('artikel') ? 'active': '' }}"><a href="/artikel" class="nav-link">Artikel</a></li>
                     <li class="nav-item {{ request()->is('daftar') ? 'active': '' }}"><a href="/daftar" class="nav-link">Daftar</a></li>
-                    <li class="nav-item"><a href="/masuk" class="nav-link">Login</a></li>
+                    <!-- <li class="nav-item"><a href="/masuk" class="nav-link">Login</a></li> -->
                 </ul>
             </div>
         </div>
@@ -151,7 +151,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="{{asset('/sites')}}/js/google-map.js"></script>
     <script src="{{asset('/sites')}}/js/main.js"></script>
-
+    @stack('footersite')
 
 
 </body>

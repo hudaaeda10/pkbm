@@ -17,11 +17,11 @@ class CreateTeachersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->unsigned();
             $table->string('nama_depan');
-            $table->string('nama_belakang');
+            $table->string('nama_belakang')->nullable();
             $table->string('jenis_kelamin', 191);
             $table->date('tanggal_lahir');
             $table->text('alamat');
-            $table->string('jabatan');
+            $table->string('jabatan')->nullable();
             $table->string('pendidikan');
             $table->string('no_handphone');
             $table->string('avatar')->nullable();
